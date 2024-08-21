@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event One</title>
+
+    <style>
+      * {
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        background-color: #000;
+        color: #fff;
+      }
+      img {
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    hello
+    <ul id="img">
+      <li>
+        <img
+          src="https://images.pexels.com/photos/772803/pexels-photo-772803.jpeg"
+          alt=""
+          id="nature"
+        />
+      </li>
+      <li>
+        <img
+          src="https://images.pexels.com/photos/844124/pexels-photo-844124.jpeg"
+          alt=""
+          id="bitcoin"
+        />
+      </li>
+      <li>
+        <img
+          src="https://images.pexels.com/photos/2802368/pexels-photo-2802368.jpeg"
+          alt=""
+          id="india"
+        />
+      </li>
+      <!-- <li>
+        <img
+          src="https://images.pexels.com/photos/2728252/pexels-photo-2728252.jpeg?auto=compress&cs=tinysrgb&w=200&h=750&dpr=1"
+          alt=""
+          id="holi"
+          onclick="alert('not good in html ')"
+        />
+      </li> -->
+      <li>
+        <img
+          src="https://images.pexels.com/photos/2728252/pexels-photo-2728252.jpeg?auto=compress&cs=tinysrgb&w=200&h=750&dpr=1"
+          alt=""
+          id="holi"
+        />
+      </li>
+      <li>
+        <a
+          style="color: aliceblue"
+          href="https://google.com"
+          id="google"
+          target="_blank"
+          >Google</a
+        >
+      </li>
+    </ul>
+
+    <!-- script -->
+
+    <script>
+      //   document.getElementById("holi").onclick = () => {
+      //     alert("click on holi festivel img ");
+      //   };
+      // good but not a morden approch
+
+      // const holi = document.getElementById("holi");
+      // const ul = document.getElementById("img");
+      // holi.addEventListener("click", (e) => {
+      //   // alert("best way!!!! to handel events");
+      //   console.log("on holi img click");
+      //   // e.stopPropagation(); // now no bubbiling
+      // });
+      // img.addEventListener("click", (e) => {
+      //   console.log("on ul tag click");
+      // });
+      // above is the example of bubbling , because when we click on holi name id and ul tag event then first holi  event exectute and ul
+
+      // while in capcturing first parent tag element event execute and chlid ... so how to capturing
+      // holi.addEventListener(
+      //   "click",
+      //   (e) => {
+      //     console.log("on holi img click");
+      //   },
+      //   true
+      // );
+
+      // img.addEventListener(
+      //   "click",
+      //   (e) => {
+      //     console.log("on ul tag click");
+      //   },
+      //   true
+      // );
+      // total dependence on use case
+      // event praprogation
+
+      // need to learn
+      // type, timestamp, defaultPrevented
+      // target, toElement, srcElement, currentTarget,
+      // clientX, clientY, screenX, screenY
+      // altkey, ctrlkey, shiftkey, keyCode
+
+      // const google = document.getElementById("google");
+      // google.addEventListener("click", (e) => {
+      //   e.preventDefault();
+      //   console.log("goole click");
+      // });
+
+      // remove img with dot mark
+      const ul = document.getElementById("img");
+      ul.addEventListener("click", (e) => {
+        // console.log(e.target.parentNode);
+          let removeIt = e.target.parentNode;
+          removeIt.remove()
+      });
+
+      // do more practice for more info :) && :(
+        
+    </script>
+  </body>
+</html>
