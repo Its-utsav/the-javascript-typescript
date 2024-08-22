@@ -1,5 +1,5 @@
 markdown: kramdown
-theme: architect
+theme: minima
 exclude:
   - Gemfile
   - Gemfile.lock
