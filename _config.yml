@@ -1,5 +1,5 @@
 markdown: kramdown
-theme: hacker
+theme: architect
 exclude:
   - Gemfile
   - Gemfile.lock
