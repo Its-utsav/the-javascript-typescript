@@ -12,9 +12,10 @@
     - [Creating The stings](#creating-the-stings)
   - [Number and Math Object](#number-and-math-object)
     - [Declaring Number](#declaring-number)
-  - [Date](#date)
   - [Array](#array)
+    - [creating array](#creating-array)
   - [Object](#object)
+  - [Date](#date)
   - [Functions](#functions)
     - [scopes](#scopes)
     - [IIFE (Immediately Invoked Function Expression)](#iife-immediately-invoked-function-expression)
@@ -602,6 +603,7 @@ let n2 = new Number(100); // as object
   - both are same `parseInt == Number.parseInt` - > `true`
   - both are same `parseFloat == Number.parseFloat` - > `true`
   - `parseInt(value)` and `parseFloat(value)` are available at Global
+  - ---
   ```js
   console.log(parseInt(100.2)) // 100 
   console.log(Number.parseInt(100.2)) // 100
@@ -611,6 +613,7 @@ let n2 = new Number(100); // as object
 - `isNaN(value)` , `isFinite(value)`
   - `isNaN(value)` return `true` if given value is `Not a Number` other wise `false`
   - `isFinite(value)` return `true` if given value is `Finite` other wise `false`
+
 ```js
 let num = 123; // normal variable declarations
 
@@ -634,7 +637,7 @@ console.log(newNum.toPrecision(4)); // 3.140
 let ranchosFatherSalary = 25000000; // from 3 idiots 😂
 // we are unable to read it
 // js : don't worry
-console.log(ranchosFatherSalary.toLocaleString("en-in"));// 2,50,00,000
+console.log(ranchosFatherSalary.toLocaleString("en-in")); // 2,50,00,000
  // salary convert into as per indian standard
 
 let max_num = Number.MAX_SAFE_INTEGER;
@@ -678,72 +681,41 @@ let max = 100;
 
 console.log(Math.floor(Math.random() * (max - min + 1) + min));
 // now value always be 10 to 100
+
 ```
-
-## Date
-
-- Dates 🫣
-- JavaScript `Date` objects represent a single moment in time in a platform-independent format
-- js date start from mid night from 1 jan 1970 UTC
-- date object calculate time in `millisecond` 
-- month index start with `0`
-
-```js
-let date = new Date();
-// YYYY-MM-DDTHH:mm:ss.sssZ
-console.log(typeof date); // object
-console.log(date);
-// in node js - 2024-05-03T09:27:51.563Z // ISO string
-// Wed Aug 21 2024 20:16:10 GMT+0530 (India Standard Time)
-console.log(date.toString());
-// Fri May 03 2024 14:59:35 GMT+0530 (India Standard Time)
-// now readable
-
-console.log(date.toDateString()); // Wed Aug 21 2024
-console.log(date.toISOString()); // 2024-08-21T14:46:10.355Z
-// a simplified format based on ISO 8601
-console.log(date.toLocaleDateString()); // 8/21/2024
-console.log(date.toLocaleTimeString()); // 8:16:10 PM
-
-let myDate = new Date(2024, 1, 1); 
-// this own date
-// here month start from 0 (means 0 0 => jan , 1=> Feb ,....)
-
-let myDate = new Date(2024, 1, 1, 22, 45, 90);
-// note here second is 90 which is wrong but in output 30 second added to the next minutes
-let indiaDate = new Date("2024-05-03"); 
-console.log(indiaDate);  // Fri May 03 2024 05:30:00 GMT+0530 (India Standard Time)
-
-let timeNow = Date.now(); // 1724252059625
-// Date.now() -> time in millisecond
-console.log(Date(timeNow)); // Wed Aug 21 2024 20:24:25 GMT+0530 (India Standard Time)
-
-// full customization
-
-date.toLocaleString("default", {
-  weekday: "long",
-  month: "short",
-});
-
-console.log(date);
-```
-----
-```js
-let date = new Date();
-
-console.log(date.getFullYear());
-console.log(date.getMonth());
-console.log(date.getDay());
-```
-- we can retrieve date, year , full year, month, date , time ,hour ,second etc , even in UTC
-[for more info visit mdn](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
 
 ## Array
 
-- in js array can store `any datatype`
+- in js array can store `any datatype` including `function` , `array` , `object` etc.
 - js array are resizable
 - zero based indexing
-- array type in object
+- **array type is object not an array**
+- array is in javascript are special type object 
+- [why](./07-interview.md#why-array-type-is-object)
+
+### creating array
+
+```js
+let arr = [1,2,3.14,'Hello',[4,5,[100,101]],function(){
+  console.log('LOL')
+}] // type object
+
+```
+---
+```js
+new Array()
+new Array(element1)
+new Array(element1, element2)
+new Array(element1, element2, /* …, */ elementN)
+new Array(arrayLength)
+
+Array()
+Array(element1)
+Array(element1, element2)
+Array(element1, element2, /* …, */ elementN)
+Array(arrayLength)
+```
+---
 ```js
 let arr = [1, 2, 3.14, true];
 
@@ -833,6 +805,7 @@ let newArray = Array.of(num1, num2, num3);
 
 console.log(newArray);
 ```
+
 
 ## Object
 
@@ -1003,6 +976,67 @@ let { name: userNaem } = user; // same as above just we give alternative name
 
 console.log(name);
 ```
+
+## Date
+
+- Dates 🫣
+- JavaScript `Date` objects represent a single moment in time in a platform-independent format
+- js date start from mid night from 1 jan 1970 UTC
+- date object calculate time in `millisecond` 
+- month index start with `0`
+
+```js
+let date = new Date();
+// YYYY-MM-DDTHH:mm:ss.sssZ
+console.log(typeof date); // object
+console.log(date);
+// in node js - 2024-05-03T09:27:51.563Z // ISO string
+// Wed Aug 21 2024 20:16:10 GMT+0530 (India Standard Time)
+console.log(date.toString());
+// Fri May 03 2024 14:59:35 GMT+0530 (India Standard Time)
+// now readable
+
+console.log(date.toDateString()); // Wed Aug 21 2024
+console.log(date.toISOString()); // 2024-08-21T14:46:10.355Z
+// a simplified format based on ISO 8601
+console.log(date.toLocaleDateString()); // 8/21/2024
+console.log(date.toLocaleTimeString()); // 8:16:10 PM
+
+let myDate = new Date(2024, 1, 1); 
+// this own date
+// here month start from 0 (means 0 0 => jan , 1=> Feb ,....)
+
+let myDate = new Date(2024, 1, 1, 22, 45, 90);
+// note here second is 90 which is wrong but in output 30 second added to the next minutes
+let indiaDate = new Date("2024-05-03"); 
+console.log(indiaDate);  // Fri May 03 2024 05:30:00 GMT+0530 (India Standard Time)
+
+let timeNow = Date.now(); // 1724252059625
+// Date.now() -> time in millisecond
+console.log(Date(timeNow)); // Wed Aug 21 2024 20:24:25 GMT+0530 (India Standard Time)
+
+// full customization
+
+date.toLocaleString("default", {
+  weekday: "long",
+  month: "short",
+});
+
+console.log(date);
+```
+----
+```js
+let date = new Date();
+
+console.log(date.getFullYear());
+console.log(date.getMonth());
+console.log(date.getDay());
+```
+- we can retrieve date, year , full year, month, date , time ,hour ,second etc , even in UTC
+[for more info visit mdn](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
+
+
+
 
 ## Functions
 

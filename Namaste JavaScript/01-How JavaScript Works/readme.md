@@ -1,5 +1,6 @@
 # How JavaScript Works
 - Everything in JavaScript happens inside an **Execution Context** . (big box in which whole code execute)
+
 - JavaScript is synchronous (specific synchronous order) , single thread language (one command at a time).
 ----------------------------
 ##  JavaScript Execution context
