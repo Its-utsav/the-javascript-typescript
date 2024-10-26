@@ -2,15 +2,20 @@
 
 ## TOC
 
-1. [js working](#how-js-work)
-2. [Truthy anf Falsy Value](#truthy-and-falsy-value)
-3. [Advance Loops](#advanced-iterative-statements)
-4. [Map](#maps)
+- [part 2 of JavaScript](#part-2-of-javascript)
+  - [TOC](#toc)
+  - [How JS work](#how-js-work)
+  - [Truthy and Falsy Values](#truthy-and-falsy-values)
+    - [Nullish Coalescing operator](#nullish-coalescing-operator)
+  - [Advanced Iterative Statements](#advanced-iterative-statements)
+    - [Part 1](#part-1)
+    - [Part 2](#part-2)
+  - [Maps](#maps)
 
 ## How JS work
 
 - when ever JavaScript Execute , there is `Execution Context` is created.
-- JS is single threaded langauge .
+- JS is single threaded language .
 
 ```js
 let a = 12;
@@ -46,27 +51,27 @@ console.log(add(100, 100));
 - When above code start execute then
 
 1. Global Execution Context is created (`this` , `Window` object for Browser)
-2. Memory For all variable are allocated and set `undefined` value for all variable includeig `let` and `const` and for the function whole function statement copy into function name (function defination) , i only decalre function not a invoke the function
+2. Memory For all variable are allocated and set `undefined` value for all variable including `let` and `const` and for the function whole function statement copy into function name (function definition) , I only declare function not a invoke the function
 
-![Memory Creation Pahse](./images/EC-1.png)
+![Memory Creation Phase](./images/EC-1.png)
 
 3. Execution Phase in this phase all the value of variable replace `undefined`
 
 ![Execution Phase](./images/EC_2.png)
 
-4. now `console.log(add(v1, v2));` line encounted here function is invoked , so another Execution contex is created for the function but now it is not a Global Exceution contex
+4. now `console.log(add(v1, v2));` line encounter here function is invoked , so another Execution context is created for the function but now it is not a Global Execution context
 
-5. in Function we have varibale call `ans ` in is value set to the `undefined` and even for `num1`, `num2` parameter and set value `undefined` .
+5. in Function we have variable call `ans ` in is value set to the `undefined` and even for `num1`, `num2` parameter and set value `undefined` .
 
 6. then perform addition operation than return the value to the caller (`Global Execution context`) .
 
 7. and print the value `15`
 
-8. And Function Execution context Will Destory
+8. And Function Execution context Will Destroy
 
 9. next line execute it is also function so again `Function Execution Context Created`
 
-10. Same agian memory creation phase and code excution phase start and end.
+10. Same again memory creation phase and code execution phase start and end.
 
 - in between this call stack also create as per function execute .
 
@@ -86,9 +91,9 @@ function two() {
 one();
 ```
 
-- one function one call than `Hello From Function one` will print after that function two call and `Hello From Function Two` will print till here global exacution context at bottom of the Call Stack .
+- one function one call than `Hello From Function one` will print after that function two call and `Hello From Function Two` will print till here global execution context at bottom of the Call Stack .
 - than function one call and it will place at up from `global exacution context` than function two call and function two place top of function `one` execution context
-- firstly two execution context destory than function one execution context destory and if thrie on statement so even global execution will also destory .
+- firstly two execution context destroy than function one execution context destroy and if their on statement so even global execution will also destroy .
 
 ![call stack](./images/EC_4.png)
 
@@ -96,9 +101,9 @@ one();
 
 ![call stack](./images/call-stack.png)
 
-## Truthy and Falsy Value
+## Truthy and Falsy Values
 
-- `Falsy` value is a value that considered `false` when encounted in a `boolean` context .
+- `Falsy` value is a value that considered `false` when encounter in a `boolean` context .
 
 - `Falsy` values
 
@@ -176,7 +181,7 @@ for (let key in map1) {
 }
 ```
 
-2. `for...of` - use on iterate over a value of an iterable object such as `array` , `map` ,`set` , `string` .
+2. `for...of` - use on iterate over a value of an inerrable object such as `array` , `map` ,`set` , `string` .
 
 - `[" "," "," "]` , `[{ },{ },{ }]`
 
@@ -216,9 +221,9 @@ for (let key of obj) {
 
 ![level](https://media1.tenor.com/m/1TKYKm9SvmgAAAAd/sabke-niklenge-lavish-level.gif)
 
-- from here all loops are more usefull main for `Array` .
+- from here all loops are more useful main for `Array` .
 
-1. `forEach()` - most usefull loop or `Array method`
+1. `forEach()` - most useful loop or `Array method`
 
 - this method use when we perform any operation on `each` array element . but no return
 
@@ -294,7 +299,7 @@ let loopval = language.forEach((value, index, arr) => {
 
 2. `fillter` -
 
-- almost similar to `forEach` but main differnt is that it return a value.
+- almost similar to `forEach` but main different is that it return a value.
 - and return as per our `condition`
 
 ```js
@@ -378,7 +383,7 @@ console.log(total);
 
 ## Maps
 
-- `maps` are similar to `object` they remebere the orignal insertion order of keys .
+- `maps` are similar to `object` they remembered the original insertion order of keys .
 - `maps` are `unique`
 
 ```js
@@ -403,12 +408,12 @@ console.log(map1.size);
 ```
 
 - `new Map()` - create a new map instance.
-- `Map.set()` - set value (only uniuqe).
-- `Map.get('<key require>')` - retrive the value
+- `Map.set()` - set value (only unique).
+- `Map.get('<key require>')` - retrieve the value
 - `Map.has('<key>')` - return `true` or `false`
 - `Map.keys()` - return only `keys`
 - `Map.values()` - return only values
-- `Map.entries()` - return a new `map` instanse that contain `map` object
+- `Map.entries()` - return a new `map` instance that contain `map` object
 
 ```js
 let map1 = new Map();
