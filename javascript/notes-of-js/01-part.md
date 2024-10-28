@@ -6,8 +6,8 @@
   - [TOC](#toc)
   - [Variables](#variables)
   - [DataType](#datatype)
-  - [ Answer](#-answer)
   - [Type conversion And operations](#type-conversion-and-operations)
+  - [**Note** - almost all operators in programming language are same , so read your self click here](#note---almost-all-operators-in-programming-language-are-same--so-read-your-self-click-here)
     - [MEMES WITH JS Addition 😵😂](#memes-with-js-addition-)
   - [Strings](#strings)
   - [Number and Math Object](#number-and-math-object)
@@ -22,9 +22,10 @@
 ## Variables
 
 - `let` , `var` , `const` three way to declare variable in JS
-- `const` we can't change value , we must need to assign value when we use `const` it has block scope `{ // this is scope }`
+- `const` we can't change value , can't reassign the value , we must need to assign value when we use `const` it has block scope `{ // this is scope }`
 - `let` value assign is optional we can reassign value and it has also block scope
 - `var` is global scope always in window object , now we don't use `var`
+- `var` has many problem , if we can avoid the problems than we can use it but not recommended
 - if variable value is not assign then it set `undefined` as default value - it is very special
 
 ```js
@@ -38,28 +39,28 @@ const me;     // SyntaxError: Missing initializer in const declaration
 
 ## DataType
 
-- this are Primitive data types (most basics data types , may be some are immutable, call by value )
+- Their are Primitive data types (most basics data types , may be some are immutable, call by value)
 
-1. `number` - store numeric value even with floating points `let age = 18` , `let cgpa = 8.55`;
-2. `string` - store array of character
-3. `boolean` - only `true` and `false`
-4. `null` - standalone value and datatype is `object`
-5. `undefined` - not assign value
+1. `number` - store numeric value even with floating points `let age = 18` , `let pi = 3.14`; [visit number](#number-and-math-object)
+2. `string` - store character array [visit string](#strings)
 
 ```js
 let name1 = "javascript";
 //or
 let name2 = "mark";
 // or
-let name3 = `hello`;
+let name3 = `hello`; // -> string literal
 ```
 
-6. `symbol` - **always unique** added in `ES6`
-7. `bigInt` - when we need to perform operations on larger number rarely used `let bigNum = 1234n;`
+3. `boolean` - Represent only `true` and `false`
+4. `null` - Standalone value and datatype is `object`
+5. `undefined` - Default value for all variable , if value is not define the we got`undefined`
+6. `symbol` - **Always unique** added in `ES6`
+7. `bigInt` - When we need to perform operations on larger number than bigInt can be used but , it is rarely used `let bigNum = 1234n;`
 
 ---
 
-we use `typeof` key word to check datatype of the variable
+We use `typeof` key word to check datatype of the variable
 
 ```js
 let name = "js";
@@ -70,7 +71,7 @@ let arr = [1, 2, 3];
 console.log(typeof arr); // object OMG
 ```
 
-- famous interview question
+- Famous interview question
   what is the output of this program
 
 ```js
@@ -81,26 +82,31 @@ console.log(typeof undefined);
 ---
 
 <details>
-  <summary> Answer</summary>
+  <summary> Answer </summary>
+
 ---
+
 ```js
 object;
 undefined;
 ```
 
-- explanation :-
+---
+
+- Explanation :-
 - `null` and `undefined` both are special value that represent the absence of a value / Data
-- if you know JavaScript Execution context than read it otherwise [click here](/javascript/notes-of-js/02-part.md/#how-js-work) to read about JS execution context
+- Read about [JavaScript execution context](02-part.md/#how-js-work)
 
 - null :-
   - `null` -> `object`
-  - some people (developer suggest that) think this is is mistake in language design
-  - null represent no value or no object , it need to be assign explicitly
-  - it (may) be a bug in JavaScript implementation that why it return `type` for `null` is `object`
-  - this bug never fix because it would broke existing code on the web.
+  - Some people (developer suggest that) think this is is mistake in language design
+  - `null` represent no value or no object , it need to be assign `explicitly` , assign by the developer
+  - It may be a bug in JavaScript implementation that why it return `type` for `null` is `object`
+  - This bug never fix because if it fixed than it would broke existing code on the web.
 - undefined:-
-  - `undefined` is a primitive datatype and automatically assign to the all variable (even function parameter) due to phase 1 `memory creation` of JavaScript execution context
-  - that why it return `type` for `undefined` is `undefined`
+  - `undefined` is a primitive datatype and automatically assign to the all variable (even function parameter , return values ) due to phase 1 `memory creation` of JavaScript execution context
+  - Developer can assign `undefined` to the variable when we needed
+  - That's why it return `type` for `undefined` is `undefined` not an `object`
 
 </details>
 
@@ -108,10 +114,10 @@ undefined;
 
 **Notes**
 
-- JavaScript change over the time , means JS in `2015` and JS in `2024` (this notes writing time year) is very different
-- once we write `"use strict"` all code in JS file will treat as newer version of JS
-- JavaScript can run at both at client (by default in browser) and server (with help of `node js` , or other JS runtime)
-- code must be readable and easy to understand
+- JavaScript change over the time , means JS in `2015` and JS in `2024` (this notes writing time year) or nay year is very different
+- Once we write `"use strict"` all code in JS file will treat as newer version of JS , If we did not write `"use strict"` than **sloppy mode** mode but not an official designation
+- JavaScript can run at both at client (by default in browser) and server (with help of `node js` , or other JS runtime like `deno js` , `bun js`)
+- In any programming language code must be readable and easy to understand
 
 ```js
 console.log(
@@ -123,11 +129,32 @@ console.log(
 ); // to bad
 ```
 
+- why primitive are call by value ?
+
+```js
+function logNum(num) {
+  num = 100; // change the value in function
+  console.log("Value of number Inside the function  = ", num); // chnage
+}
+
+let num = 20;
+logNum(num);
+console.log("Value of number Outside the function  = ", num); // still 20
+```
+
+- `num` store first 20
+- inside the function `num` value changed to `100`
+- print `Value of number Inside the function  =  100`
+- function scope destroy
+- than console.log that is outside of a function print
+- `Value of number Outside the function  =  20`
+- Value is same still 20 it did not changed
+
 ---
 
 - Non-Primitive data types (call by references)
 
-1. Array
+1. Array - Collection of value store in continue memory location
 
 ```js
 let arr = [
@@ -147,7 +174,7 @@ let arr = [
 ];
 ```
 
-2. Object - most IMP thing in JS ,it's key value pair or value with named index
+2. Object - Most IMP thing in JS ,it's key value pair or value with named index
 
 ```js
 let user = {
@@ -164,17 +191,62 @@ user.printName();
 
 3. Function
 
+- reusable code of block
+
 ```js
 function abc() {
   console.log("Hello World");
 }
 ```
 
----
+- why call by references ?
+
+```js
+function logArr(arr) {
+  arr.push(30); // Add into array
+  console.log("Array values Inside the function  = ", arr);
+}
+
+let arr = [10, 20];
+logArr(arr);
+console.log("Array values Outside the function  = ", arr);
+```
+
+<p style="text-align: center">Output</p>
+
+```txt
+Array values Inside the function  =  [ 10, 20, 30 ]
+Array values Outside the function  =  [ 10, 20, 30 ]
+```
+
+- In above we create array , than we add `30` in function
+- Even though we add new value in `arr` in function it effect original array
+
+```js
+function logObj(obj) {
+  obj["gender"] = "male";
+  console.log("Obj values Inside the function  = ", obj);
+}
+
+let obj = {
+  name: "Utsav",
+  age: 18,
+};
+logObj(obj);
+
+console.log("Obj values Outside the function  = ", obj);
+```
+
+<p style="text-align: center">Output</p>
+
+```txt
+Obj values Inside the function  =  { name: 'Utsav', age: 18, gender: 'male' }
+Obj values Outside the function  =  { name: 'Utsav', age: 18, gender: 'male' }
+```
 
 - two types of memory
-- Stack (Primitive) , Heap (Non - primitive )
-- stack memory - we get a copy of a variable
+- Stack (for storing Primitive data types) , Heap (for storing Non - primitive data types)
+- stack memory - we get a copy of a variable so original value won't effect
 - heap memory - we get reference of variable (modification apply in even in original)
 - some graphical representation
   ![image of stack and heap memory](./images/stack-heap.png)
@@ -182,7 +254,7 @@ function abc() {
 ## Type conversion And operations
 
 - In JS type conversion is very nightmare topic but not a impossible
-- JS is dynamic type language not a static typed language means we don't need to define type of the variable
+- JS is dynamic type language not a static typed language means we don't need to define type of the variable at declaration
 
 ```js
 let score = 100; // here we not specify the type of the variable
@@ -193,19 +265,21 @@ console.log(typeof score); // number
 
 ```js
 let score = "100";
-
 console.log(typeof score); // string
 ```
 
-- we can convert the string type variable into number ⚠️
+- We can convert the string type variable into number ⚠️
+- In below code I use Number Constructure
 
 ```js
 let score = "100";
 let newScore = Number(score); // now the string score convert into number
 console.log(typeof newScore); // number
+console.log(score); // "100"
+console.log(newScore); // 100
 ```
 
-- till now nothing to confusing
+- Till now nothing to confusing
 
 ```js
 let score = "why i am score";
@@ -220,34 +294,37 @@ console.log(newScore); // NaN
 ```
 
 - `"why i am score"` string can't convert into number that why it return `NaN`
-- it is not a bug , but basically JavaScript try to convert in number but it can't convert so it return `NaN`
+- It is not a bug , but basically JavaScript try to convert in number but it can't convert so it return `NaN`
+- Learn latter about `NaN`
 
 ```js
 let num = null;
 let newNum = Number(num);
 
 console.log(newNum); // 0
-// null -> 0
+// null -> 0 ⭐
 
 let x = undefined;
 let newX = Number(x);
 console.log(newX);
-// undefined -> NaN
+// undefined -> NaN ⭐
 
 let x = true;
 let newX = Number(x);
-console.log(newX); // 1
+console.log(newX); // 1  true -> 1⭐
 
 let x = false;
 let newX = Number(x);
-console.log(newX); // 0
+console.log(newX); // 0 false -> 0 ⭐
 
-let isLoggedIn = 1; // een "1" convert into true
+let isLoggedIn = 1; // here 1 convert into true
 let boolValue = Boolean(isLoggedIn);
 console.log(boolValue); //  true
-// for 0 numeric value its boolean value will be false
 
-// level upgrade
+// for 0 numeric value its boolean value will be false
+// 1 -> true
+// 0 -> false
+
 let age = "Hello";
 
 let boolValue = Boolean(age);
@@ -305,11 +382,13 @@ console.log(typeof strNum);
 let str1 = "Hello ";
 let str2 = "World !!!";
 let str3 = str1 + str2;
-console.log(str3);
+console.log(str3); // Hello World !!!
 // string concatenations
 ```
 
 ---
+
+## **Note** - almost all operators in programming language are same , so read your self [click here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators)
 
 ### MEMES WITH JS Addition 😵😂
 
@@ -322,6 +401,11 @@ console.log(1 + +"2"); // but 3
 // 1  -> 1
 // +"2"-> 2
 // 1 + 2 = 3
+```
+
+---
+
+```js
 console.log(1 + 2 + "3"); // 33
 // 1 + 2 = 3
 // 3 + "3" = 33
@@ -332,11 +416,9 @@ console.log("1" + 2 + 3); // 123
 
 ---
 
-**Note** - almost all operators in programming language are same , so read your self [click here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators)
-
 ---
 
-- in JS we can compare two different datatype values which is completely wrong ❌👎 that why typescript came in to he picture
+- In JS we can compare two different datatype values which is completely wrong ❌👎 that why typescript came in to he picture
 - here why it is wrong
 
 ```js
@@ -364,8 +446,8 @@ console.log(1 === "1"); // false
 
 ---
 
-- sequences of character
-- string can be represent as character of an array
+- Sequences of character
+- String can be represent as character of an array
 - `"hi".__proto__` in `console`
 
 - as string literals
@@ -394,7 +476,7 @@ console.log(str[0]); // H
 `String.prototype`
 
 - `length`
-  - return the string length , count the character in string
+  - Return the string length , count the character in string
   ```js
   let str = "Hello";
   console.log(str.length); // 4
@@ -403,27 +485,34 @@ console.log(str[0]); // H
 ---
 
 - `charAt(index)`
-  - return the character at specific index
+  - Return the character at specific index
   ```js
   let str = "Hello";
   console.log(str.charAt(1)); // 'e'
   console.log(str.charAt()); // 'H'
   ```
   - if index is `out of range` even for negative value than it return `' '` (empty string).
+  - It did not allow negative index
+- If we want to use negative values as index than we can use `at(index)`
+  - negative values than it given index from last of the string
+  - `-1` -> last character
+  - `-2` -> second last character ..... so on
+
+---
+
 - `charCodeAt(index)`
-  - if we want the a `UTF-16` value from the index than we can use `charCodeAt(index)`
+  - If we want the a `UTF-16` value from the index than we can use `charCodeAt(index)`
   ```js
   let a = "Hello World";
   console.log(a.charCodeAt()); // zero index 47
   console.log(a.charCodeAt(2)); // zero index 108
   ```
-  - if we want to use negative values as index than we can use `at(index)`
-  - negative values than it given index from last of the string
-  - `-1` -> last character
-  - `-2` -> second last character ..... so on
+
+---
+
 - `concat(s1,s2,s3,sN)`
 
-  - Combines the multiple string into one string
+  - Combines the multiple string into one string , without modifying original string
 
   ```js
   let str1 = "Hello";
@@ -433,30 +522,33 @@ console.log(str[0]); // H
 
 - `includes(substr,position)`
 
-  - it return `true` or `false` whether the given substring found in string
+  - It return `true` or `false` whether the given substring found in string
   - we can optional give index position to start searching by default is `0`
 
   ```js
   let str = "Hello World";
   console.log(str.includes("World")); // true
+  console.log(str.includes("e")); // true
+  console.log(str.includes("k")); // false
   ```
 
 - `indexOf(searchString,fromIndex)`
-  - it return index of first occurrence of the give search string
-  - if given search string not found than it return -1
+  - It return index of first occurrence of the give search string
+  - If given search string not found than it return `-1`
   ```js
   let str = "Hello World";
   console.log(str.indexOf("World")); // 6
+  console.log(str.indexOf("k")); // -1
   ```
-  - if we have need from last than we can use `lastIndexOf()`
+  - If we have need from last than we can use `lastIndexOf()`
   ```js
   let str = "Hello World";
   console.log(str.lastIndexOf("l")); // 9
   ```
 - `slice(beginIndex, endIndex)`
 
-  - it cut and return the given as per begin and end index(not include)
-  - it do not modify the original string
+  - It cut and return the given as per begin and end index(not include)
+  - It do not modify the original string
 
   ```js
   let str = "Hello World";
