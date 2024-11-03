@@ -7,7 +7,6 @@
   - [Variables](#variables)
   - [DataType](#datatype)
   - [Type conversion And operations](#type-conversion-and-operations)
-  - [**Note** - almost all operators in programming language are same , so read your self click here](#note---almost-all-operators-in-programming-language-are-same--so-read-your-self-click-here)
     - [MEMES WITH JS Addition 😵😂](#memes-with-js-addition-)
   - [Strings](#strings)
   - [Number and Math Object](#number-and-math-object)
@@ -191,7 +190,7 @@ user.printName();
 
 3. Function
 
-- reusable code of block
+- Reusable code of block
 
 ```js
 function abc() {
@@ -199,7 +198,7 @@ function abc() {
 }
 ```
 
-- why call by references ?
+- why non primitive are call by references ?
 
 ```js
 function logArr(arr) {
@@ -269,7 +268,7 @@ console.log(typeof score); // string
 ```
 
 - We can convert the string type variable into number ⚠️
-- In below code I use Number Constructure
+- In below code I use Number Constructor
 
 ```js
 let score = "100";
@@ -361,13 +360,15 @@ console.log(typeof strNum);
 | ""        |     Boolean     |  false |     Boolean |
 | "hi"      |     Boolean     |   true |     Boolean |
 
-- and more
+- and more type conversion possible
 
 * what is `NaN` ?
 
   - `NaN` stand for Not a Number
-  - it check given parameter is **not a number** or not
-  - its type is `number`
+  - It check given parameter is **not a number** or not
+  - It return `false` if give parameter is number even if we enter string number like '110' due to type conversion .
+  - It return `true` if given parameter is **NOT A NUMBER**
+  - Its type is `number` . `typeof NaN` -> `number`
   - [go on numbers to read about NaN](#number-and-math-object)
 
   ```js
@@ -387,8 +388,6 @@ console.log(str3); // Hello World !!!
 ```
 
 ---
-
-## **Note** - almost all operators in programming language are same , so read your self [click here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators)
 
 ### MEMES WITH JS Addition 😵😂
 
@@ -418,7 +417,7 @@ console.log("1" + 2 + 3); // 123
 
 ---
 
-- In JS we can compare two different datatype values which is completely wrong ❌👎 that why typescript came in to he picture
+- In JS we can compare two different datatype values which is completely wrong ❌👎 that why typescript came in to the picture
 - here why it is wrong
 
 ```js
@@ -455,7 +454,7 @@ console.log(1 === "1"); // false
 ```js
 let str1 = "Hello JS";
 let str2 = "Hello Js 2";
-let str3 = `Hello Js 3`;
+let str3 = `Hello Js 3`; // string literal
 console.log(typeof str1, typeof str2, typeof str3); // string string string
 ```
 
@@ -491,9 +490,9 @@ console.log(str[0]); // H
   console.log(str.charAt(1)); // 'e'
   console.log(str.charAt()); // 'H'
   ```
-  - if index is `out of range` even for negative value than it return `' '` (empty string).
-  - It did not allow negative index
-- If we want to use negative values as index than we can use `at(index)`
+  - If index is `out of range` and if we give negative value than it return `' '` (empty string).
+  - It did not allow negative index return `' '`
+  - If we want to use negative values as index than we can use `at(index)`
   - negative values than it given index from last of the string
   - `-1` -> last character
   - `-2` -> second last character ..... so on
@@ -533,45 +532,62 @@ console.log(str[0]); // H
   ```
 
 - `indexOf(searchString,fromIndex)`
-  - It return index of first occurrence of the give search string
+
+  - It return index of first occurrence of the give search sub-string
   - If given search string not found than it return `-1`
+
   ```js
   let str = "Hello World";
   console.log(str.indexOf("World")); // 6
   console.log(str.indexOf("k")); // -1
   ```
+
   - If we have need from last than we can use `lastIndexOf()`
+
   ```js
   let str = "Hello World";
   console.log(str.lastIndexOf("l")); // 9
   ```
+
 - `slice(beginIndex, endIndex)`
 
-  - It cut and return the given as per begin and end index(not include)
-  - It do not modify the original string
+  - It return a section of the string as per given index , `endIndex` will not included
+  - It do not modify the original string .
+  - `endIndex` is optional parameter
 
   ```js
   let str = "Hello World";
   let newStr = str.slice(2, 5);
   console.log(newStr); // "llo"
+  console.log(str.slice(6)); // "World"
+  console.log(str.slice(-1)); // "d"
   console.log(str); // "Hello World"
   ```
 
 - `substring(indexStart, indexEnd)`
-  - similar to `slice(beginIndex, endIndex)` , but include the end index
-  - it do not modify the original string
+
+  - Similar to `slice(beginIndex, endIndex)` , but include the `indexEnd`
+  - It do not modify the original string
+  - It do not allow the negative index
+
   ```js
   let str = "Hello World";
   console.log(str.substring(0, 5)); // "Hello"
   console.log(str); // "Hello World"
   ```
-- `substr(startIndex,endIndex)`
-  - extract the string from `startIndex` to `endIndex` (endIndex not include)
+
+- `substr(index,length)`
+
+  - It start extracting string from given index till the second parameter length otherwise it extract string till end.
+
   ```js
   let str = "Hello, world!";
   console.log(str.slice(0, 5)); // "Hello"
   console.log(str.slice(-6, -1)); // "world"
+  let str1 = "Hello World";
+  console.log(str1.slice(0, 100)); // Hello World"
   ```
+
 - `Case Change`
 
   - `UpperCase` to `LowerCase` :- `'Hello Js'.toUpperCase()` - _output_-> `'HELLO JS'`
@@ -588,23 +604,28 @@ console.log(str[0]); // H
   console.log(str); //"  Hello World  "
   ```
 
-  - we have more two option for removing white space from start `trimStart()` and removing space from end of the string `trimEnd()`
+  - We have more two option for removing white space from start `trimStart()` and removing space from end of the string `trimEnd()`
 
 - `split(delimiter,limit)`
-  - split (broke) the string as per delimiter into substring of array we can optional specify the maxLimit of split
+
+  - Split (broke) the string as per delimiter into substring of array we can optional specify the maxLimit of split
+
   ```js
   let str = "Hello World";
   let a = str.split(" ");
   console.log(a); // ["Hello", "World"]
   console.log(str); // "Hello World";
   ```
-  - if delimiter is not found than return original string as array
+
+  - If delimiter is not found than return original string as array
+
   ```js
   let str = "Hello World";
   let a = str.split("x");
   console.log(a); // ['Hello World']
   console.log(str); // "Hello World";
   ```
+
 - `replace(searchValue, newValue)`
 
   - replace the _first_ occurrences `searchValue` with `newValue`
@@ -622,7 +643,7 @@ console.log(str[0]); // H
 
 - `startsWith(str,position)` and `endsWith(str,position)`
 
-  - it check the given sting is string or ending with specific substr or not
+  - It check the given sting is string or ending with specific sub-str or not
   - return Boolean values
 
   ```js
@@ -632,7 +653,7 @@ console.log(str[0]); // H
   ```
 
 - string Operator :- `string1` + `string2` e.g.:- `Hello ` + `World` = `Hello World`
-- this is just a some overview of string `methods` and `properties`, for more info you can search on web , or [visit mdn](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+- This is just a some overview of string `methods` and `properties`, for more info you can search on web , or [visit MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
 
 ```js
 let name = "Utsav";
@@ -702,7 +723,7 @@ console.log(str.includes("mark")); // this method check that string contains sub
 
 - In JS `123` and `3.14` treat as number not a separate datatype like `c`, `c++` or any other language
 - Number in JS are very straight forward. it has very few methods
-- `JS` also have `BigInt` datatype for extremely large number , but it doesn't replace normal numbers
+- `JS` also have `BigInt` datatype for extremely large number , but it doesn't replace normal numbers , we normally just use normal number rarely used `BigInt`
 
 ```js
 let n = 100;
@@ -741,19 +762,22 @@ let n2 = new Number(100); // as object
 ```
 
 - `Number.parseInt(value)` and `parseInt(value)` , `Number.parseFloat(value)` and `parseFloat(value)`
+
   - both are same `parseInt == Number.parseInt` - > `true`
   - both are same `parseFloat == Number.parseFloat` - > `true`
   - `parseInt(value)` and `parseFloat(value)` are available at Global
-  ***
+
   ```js
   console.log(parseInt(100.2)); // 100
   console.log(Number.parseInt(100.2)); // 100
   console.log(Number.parseFloat("121.12")); // 121.12
   console.log(parseFloat("121.12")); // 121.12
   ```
+
 - `isNaN(value)` , `isFinite(value)`
   - `isNaN(value)` return `true` if given value is `Not a Number` other wise `false`
-  - `isFinite(value)` return `true` if given value is `Finite` other wise `false`
+  - `isFinite(value)` return `true` if given value (number) is `finite` other wise `false`
+    - In the case of string it return false because it can't process string and it is infinite value
 
 ```js
 let num = 123; // normal variable declarations
@@ -781,14 +805,19 @@ let ranchosFatherSalary = 25000000; // from 3 idiots 😂
 console.log(ranchosFatherSalary.toLocaleString("en-in")); // 2,50,00,000
 // salary convert into as per indian standard
 
-let max_num = Number.MAX_SAFE_INTEGER;
-let min_num = Number.MIN_SAFE_INTEGER;
-console.log(max_num, min_num);
-// js can perform any operations on number between this numbers than it may create issue
 // that why BigInt come
 ```
 
 ---
+
+```js
+let max_num = Number.MAX_SAFE_INTEGER;
+let min_num = Number.MIN_SAFE_INTEGER;
+console.log(max_num, min_num); // 9007199254740991 , -9007199254740991
+```
+
+- JS can perform any operations on number between this numbers than it may create issue
+  [learn more about number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
 
 - Math Object
 
@@ -824,11 +853,13 @@ console.log(Math.floor(Math.random() * (max - min + 1) + min));
 // now value always be 10 to 100
 ```
 
+[learn more about math object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math)
+
 ## Array
 
-- in JS array can store `any datatype` including `function` , `array` , `object` etc.
-- JS array are resizable
-- zero based indexing
+- In JS array can store `any datatype` including `function` , `array` , `object` etc.
+- JS array are resizable it can grow dynamically we do not define the size of the array
+- Array are zero based indexing , call by references modify direct original
 - **array type is object not an array**
 - array is in JavaScript are special type object
 - [why](./07-interview.md#why-array-type-is-object)
@@ -849,55 +880,74 @@ let arr = [
 ---
 
 ```js
-new Array();
-new Array(element1);
-new Array(element1, element2);
-new Array(element1, element2, /* …, */ elementN);
-new Array(arrayLength);
-
-Array();
-Array(element1);
-Array(element1, element2);
-Array(element1, element2, /* …, */ elementN);
-Array(arrayLength);
+let arr = [1, 2, 3.14, true]; // number , boolean array
+let hero = ["iron man", "spider man", "super man"]; // strings array
+const arrWithArr = new Array(1, 2, 3); // array as object
 ```
 
----
+- accessing array element
+
+```js
+let hero = ["iron man", "spider man", "super man"];
+console.log(hero[0]); // iron man
+console.log(hero[1]); // spider man
+console.log(hero[2]); // super man
+console.log(hero[3]); // undefined
+```
+
+- `Array.length` - return the length of the array
+- `hero[3]` return `undefined` because we are try to access element out of array range that's why it `undefined`
+
+- Adding / removing from last
+- `push(elements...)` method add element at end of the array
+- `pop()` remove and return last element from array
 
 ```js
 let arr = [1, 2, 3.14, true];
-
-let hero = ["iron man", "spider man", "super man"];
-
-const arrWithArr = new Array(1, 2, 3);
-
-console.table(hero[0]); // iron man
-console.table(hero[1]); // spider man
-console.table(hero[2]); // super man
-console.table(hero[3]); // undefined
-
 arr.push(8, 9, 10); // add element at last
+console.log(arr); // [1, 2, 3.14, true, 8, 9, 10 ]
 let removedEle = arr.pop(); // remove and return last element
+console.log(arr); // [ 1, 2, 3.14, true, 8, 9 ]
+console.log(`Removed element from array ${removedEle} .`); // Removed element from array 10 .
+```
 
-// worst to method it take to much time to execute operation
+- Adding / removing from start
+- `unshift(elements...)` - add element(s) at starting
+- `shift` - remove and return first element from an array
+- both method are very time consuming task because of we are modifying element at starting which means rest of the element require re-indexing
+
+```js
+let arr = [1, 2, 3.14, true];
 arr.unshift("x", "y"); // add element at first and change all existing element index
-
+console.log(arr); // [ 'x', 'y',  1, 2,   3.14, true, 8, 9]
 let removedFirstEle = arr.shift(); // remove and return first element
-let removedLastEle = arr.pop(); // remove and return last element
+console.log(arr); // ["y", 1, 2, 3.14, true, 8, 9];
+console.log(removedFirstEle); // x
+```
 
-console.log(arr);
-console.log(
-  `Last Element removed ${removedLastEle},First Element removed ${removedFirstEle}`
-);
-// Last Element removed 9,First Element removed x
+- `Array.include(element)` - method check given parameter is available in array or not it return `Boolean` value .
 
+```js
 let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+console.log(arr.includes(2)); // true
+```
 
-console.log(arr.includes(2)); // return boolean
-console.log(arr.indexOf(0)); // -1 because 0 not available in arr
+- `indexOf(element)` method return index of given parameter from the array , if not found than it return `-1`
 
-console.log(arr.join()); /// join into one string
+```js
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+console.log(arr.indexOf(0)); // -1
+console.log(arr.indexOf(1)); // 0
+```
 
+- `join(separator)` - method join the all array element and return the joined string
+
+```js
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+console.log(arr.join()); // '1,2,3,4,5,6,7,8,9'
+```
+
+```js
 // slice and splice
 
 console.log(arr.slice(1, 4)); // return a copy for start and end section
@@ -907,7 +957,7 @@ let partOfArr = arr.splice(1, 4); // last index include
 console.log(arr); // hmm affect original array [main different b/w slice and splice]
 console.log(partOfArr);
 
-const marvel_heros = ["thor", "Ironman", "spiderman"];
+const marvel_heros = ["thor", "IronMan", "SpiderMan"];
 const dc_heros = ["superman", "flash", "batman"];
 
 marvel_heros.push(dc_heros); // go wrong array inside array
@@ -931,17 +981,17 @@ let arr = [1, 2, 3, [4, [5, 6, [7, [8, 9]]]], 0];
 // console.log(arr);
 // convert into 1 array
 
-// let singleArr = arr.flat(5); // 5 nested level can convert into aarray
+// let singleArr = arr.flat(5); // 5 nested level can convert into array
 
 // arr.flat(Infinity); at all level
 // console.log(singleArr);
 
 console.log(Array.isArray("Hello")); // return boolean value
-// check given paramter is array or not
+// check given parameter is array or not
 
 console.log(Array.from("Hello")); // convert into array
 
-// console.log(Array.from({ name: "Utsav" })); // most intersing case return []
+// console.log(Array.from({ name: "Utsav" })); // most interning case return []
 
 // console.log(Array.of({ name: "Utsav" }));
 
