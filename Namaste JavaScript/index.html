@@ -4,11 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="script.js" async defer></script>
+    <!-- <script src="script.js" async defer></script> -->
   </head>
   <body style="text-align: center">
     Namaste JavaScript
 
     <button id="btn">click me</button>
+    <script>
+      function x() {
+        var i = 10;
+        setTimeout(function () {
+          console.log(`Value of i ${i}`);
+        }, 3000);
+        console.log("Hello JavaScript");
+      }
+      x();
+    </script>
   </body>
 </html>
