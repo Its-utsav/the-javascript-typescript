@@ -1,3 +1,5 @@
+# closures with setTimeout
+
 ```js
 function x(s) {
   setTimeout(function () {

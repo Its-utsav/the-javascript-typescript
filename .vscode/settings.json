@@ -4,5 +4,5 @@
     "iostream": "cpp"
   },
   "spellright.language": ["en"],
-  "spellright.documentTypes": ["markdown", "latex", "plaintext"]
+  "spellright.documentTypes": ["latex", "plaintext"]
 }

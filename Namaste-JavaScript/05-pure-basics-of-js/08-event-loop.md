@@ -78,15 +78,26 @@ console.log("End");
     console.log("Hello world!!");
   }, 5000);
   ```
-- Second line is settimeout which is again part of web APIs it store `cb()` in `Web API` environment function and delay in millisecond `5000` , end start timer for it **NOTE** it will not push inside the call stack for now
+- Second line is setTimeout which is part of web APIs it store `cb()` in `Web API` environment function along with delay (timer) in millisecond `5000` , end start timer for it **NOTE** it will not push inside the call stack for now , due to it is asynchronous task
 - `console.log("End");` this line use `Web API's` console API and log on console
 - call stack is empty
-- As soon as delay timer complete again need to push that `cb()` function inside the call stack and will execute the line inside it .**HOW ?**
-- `cb()` function can not go inside the call stack ...
+- As soon as delay timer complete `cb()` function will need to go to the call stack and will execute the line inside it .**but HOW ?**
+- `cb()` function can not go inside the call stack directly ...
+
 - For this we need `Event Loop` and `Callback Queue`
-- `Callback Queue` after the delay over the function / callback will insert into the callback queue
-- `Event Loop` it keep checking the `Callback Queue` , If it see the anything inside the `Callback Queue` it will insert into the stack . AKA it work as gate keeper
+
+- `Callback Queue` It is used to add function after the delay is over the for the callback function .
+
+- `Event Loop` it keep checking the `Callback Queue` ans call stack, If it see the anything inside the `Callback Queue` it will insert into the call stack if call stack is empty. AKA it work as gate keeper
 - `console.log("Hello world!!");` this line use `Web API's` console API and log on console
+
+```
+Start
+End
+Hello world!!
+```
+
+- Hello world!! after the 5 second of delay
 
 ### example 2 event
 
@@ -108,11 +119,11 @@ console.log("End");
   });
   ```
 - as above code encounter first DOM APIs will find id with `btn` value than `addEventListener` will add event to that html element that have `btn` id value
-- for in this case `click` event attached to element with callback function to be execute , in `Web API` environment
+- for in this case `click` event attached to element with callback (handler) function to be execute , in `Web API` environment ,it wait in `Web API` environment for further execution
 - `console.log("End");` this line use `Web API's` console API and log on console
-- user whenever click on Button function from web environment added into the `Callback Queue` and than with the help of `Event Loop` it will add into the stack than execute
-- here we understand why `Callback Queue` is needed ? why not from web environment function directly added into the stack ?
-- When user click multiple type assume 6 times than 6 time that function will insert into the `Callback Queue` one by one and execute one by one
+- user whenever click on Button function from `Web API` environment added into the `Callback Queue` and than with the help of `Event Loop` it will add into the stack than execute the handler function
+- here we understand why `Callback Queue` is needed ? why not from `Web API` environment function directly added into the stack ?
+- When user click multiple type assume 6 times than 6 time that function will insert into the `Callback Queue` one by one and execute one by one .
 
 ### example 3 fetch
 
@@ -139,7 +150,7 @@ console.log("End");
     console.log("Hello From setTimeout");
   }, 5000);
   ```
-- Second line is settimeout which is again part of web APIs it store `cb()` in `Web API` environment function along with delay in timer millisecond `5000` , end start timer for it .**NOTE** it will not push inside the call stack for now ,
+- Second line is setTimeout which is part of web APIs it store `cb()` in `Web API` environment function along with delay (timer) in millisecond `5000` , end start timer for it **NOTE** it will not push inside the call stack for now , due to it is asynchronous task .
 - ```js
   fetch("https://latest.currency-api.pages.dev/v1/currencies/usd.json").then(
     function () {
@@ -147,9 +158,9 @@ console.log("End");
     }
   ); // assume will take 2 second to get response from the server
   ```
-- `fetch` will request to the given URL , wait from the response and `Web API` environment
+- `fetch` will request to the given URL , wait from the response in `Web API` environment
 - `console.log("End");` this line use `Web API's` console API and log on console
-- for the `fetch` we have special type of queue known as `Microtask Queue` which has higher priority than normal `Callback Queue`
+- for the `fetch` / promises we have special type of queue known as `Microtask Queue` which has higher priority than normal `Callback Queue`
 
 - If we have one - one task in `Microtask Queue` and `Callback Queue` and call stack is empty than `Event Loop` will always choose that task in `Microtask Queue` not from `Callback Queue`
 
@@ -157,16 +168,18 @@ console.log("End");
 
 - meanwhile timer will reduce as per delay parameter and as soon as timer over callback function inside the setTimeout will go to the `Callback Queue`
 
-- What if data from server came in 5 second and setTimeout delay parameter have also 5 second than `Event Loop` always choose the fetch function to be execute , because fetch function call back will add into the `Microtask Queue` and for the setTimeout callback function go inside the `Callback Queue`
+- What if data from server came in 5 second and setTimeout delay parameter have also 5 second than `Event Loop` always choose the fetch function to be added onto the call stack , because fetch function callback will add into the `Microtask Queue` and for the setTimeout callback function go inside the `Callback Queue`
 - As above mentions `Microtask Queue` has higher priority than `Callback Queue`
 
 ## what go inside the Microtask Queue
 
 - all the promises's callback functions
-- **Mutation Observer** : it keep check ant mutation on DOM tree or not if any there than it call back function came to the microtask queue
-- If task inside the microtask queue create a new task (a) , from that task (a) it create a new task (b) , from that second task (b) it create a new task (c) and so on.... which is known as `starvation` or `starvation of callback queue`
+- **Mutation Observer** : it keep check any mutation on DOM tree or not if any there than it callback function came to the microtask queue
+- If task inside the microtask queue any task create a new task (a) . from that task (a) it create a new task (b) , from that second task (b) it create a new task (c) and so on ....
+- in such scenario event loop always select callback function from the `Microtask Queue` and `Callback Queue` is stuck
+- which is known as `starvation` or `starvation of callback queue`
 
-- And all rest of the callback function will go in callback queue also known as Task Queue
+- And all rest of the asynchronous callback function will go in callback queue also known as **Task Queue**
 
 ## Questions
 
@@ -175,10 +188,11 @@ console.log("End");
    2. Always running and do its job
 2. Are only asynchronous web API call backs are registered in the web API environment?
    1. Yes , Only the asynchronous callback registered in the web API environment.
-   2. synchronous callback functions like what we pass inside map, filter, and reduce aren't registered in the Web API environment
+   2. synchronous callback functions like what we pass inside `map`, `filter`, and `reduce` aren't registered in the Web API environment
 3. Does the web API environment stores only the callback function and pushes the same callback to queue/microtask queue ?
    1. Yes, the callback functions are stored, and a reference is scheduled in the queues.
    2. Moreover, in the case of event listeners(for example click handlers), the original call backs stay in the web API environment forever, that's why it's advised to explicitly remove the listeners when not in use so that the garbage collector does its job.
 4. How does it matter if we delay for setTimeout would be 0ms. Then callback will move to queue without any wait?
-   1. No, there are trust issues with setTimeout() 😅. The callback function needs to wait until the Call Stack is empty.
-   2. So the 0 millisecond callback might have to wait for 100ms also if the stack is busy.
+   1. No, there are trust issues with `setTimeout()` 😅. The callback function needs to wait until the Call Stack is empty.
+   2. So the 0 millisecond callback might have to wait for 100 millisecond also if the stack is busy.
+   3. Other answer `setTimeout()` is asynchronous task so it always go in `Callback Queue` than with allowance of `Event Loop` `setTimeout()` function callback added into the callstack.

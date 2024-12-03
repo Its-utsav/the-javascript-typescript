@@ -1,3 +1,5 @@
+# var let const
+
 - `let` and `const` variable declarations are even hoisted !!!! but not same as `var`
 - `var` **->** global scope
 - `let` and `const` **->** script scope **other then** global scope

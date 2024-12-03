@@ -1,3 +1,5 @@
+# scope chain and more
+
 ## undefined vs not defined
 
 - JavaScript memory allocate to variable before the single line of code execute and set value to the variable is `undefined` by default.
