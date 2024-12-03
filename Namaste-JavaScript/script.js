@@ -120,19 +120,19 @@
 // let count2 = count();
 // count2() // for this counter is completly new variable
 
-function Counter() {
-  let count = 0;
+// function Counter() {
+//   let count = 0;
 
-  this.incrementCount = function () {
-    count++;
-    console.log(count);
-  };
+//   this.incrementCount = function () {
+//     count++;
+//     console.log(count);
+//   };
 
-  this.decrementCount = function () {
-    count--;
-    console.log(count);
-  };
-}
+//   this.decrementCount = function () {
+//     count--;
+//     console.log(count);
+//   };
+// }
 
 // let count1 = new Counter();
 // count1.incrementCount() // 1
@@ -179,10 +179,12 @@ function Counter() {
 //   console.log("Button clicked", i++);
 // });
 
-function btnClick() {
-  let count = 1;
-  document.getElementById("btn").addEventListener("click", function xyz() {
-    console.log("Button clicked", count++); // closuer
-  });
+function attachEvent() {
+  let btn = document.getElementById('btn')
+  let c = 0;
+  btn.addEventListener('click', function xyz() {
+    console.log('button clicked', c++)
+  })
 }
-btnClick();
+
+attachEvent()
