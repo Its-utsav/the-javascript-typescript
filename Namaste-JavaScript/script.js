@@ -179,12 +179,36 @@
 //   console.log("Button clicked", i++);
 // });
 
-function attachEvent() {
-  let btn = document.getElementById('btn')
-  let c = 0;
-  btn.addEventListener('click', function xyz() {
-    console.log('button clicked', c++)
-  })
-}
+// function attachEvent() {
+// let btn = document.getElementById('btn')
+// let c = 0;
+// btn.addEventListener('click', function xyz() {
+//   console.log('button clicked', c++)
+// })
+// }
 
-attachEvent()
+// attachEvent()
+
+// console.log('Start')
+// document.getElementById('btn').
+//   addEventListener('click', function cb() {
+//     console.log('Button Clicked')
+//   })
+// console.log('End')
+
+console.log('Start');
+setTimeout(function () {
+  console.log('Hello From setTimeout')
+}, 5000);
+fetch('https://latest.currency-api.pages.dev/v1/currencies/usd.json')
+  .then(function (res) {
+    console.log(res)
+    return res.json()
+  })
+  .then(function (res) {
+    console.log(res)
+  })
+  .catch(function (e) {
+    console.error(e)
+  })
+console.log('End');
