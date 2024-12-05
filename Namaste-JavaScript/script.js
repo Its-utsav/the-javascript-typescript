@@ -233,6 +233,8 @@ const calculateDiameter = function (radius) {
     return ans;
 }
     */
+
+/*
 const area = function (radius) {
     return Math.PI * radius * radius
 }
@@ -255,3 +257,38 @@ Array.prototype.calculate = function (logic) {
 // console.log(calculate(radius, diameter))
 console.log(radius.map(area))
 console.log(radius.calculate(area))
+*/
+
+// const arr = [5, 8, 1, 4];
+
+// const double = function (ele) {
+//     return ele * 2;
+// }
+// const triple = function (ele) {
+//     return ele * 3;
+// }
+// const binary = function (ele) {
+//     return ele.toString(2)
+// }
+
+// const output = arr.map(binary)
+// // console.log(output)
+// console.log(arr.map((e) => e * 2))
+// console.log(arr.map((e) => e * 3))
+// console.log(arr.map(function (el) {
+//     return el.toString(2);
+// }))
+
+let a = [45, 1, 7, 3, 0, 34, 12, 890, 14000]
+
+// function sumOfArr(a) {
+//     let ans = 0;
+//     for (let i = 0; i < a.length; i++) {
+//         ans += a[i]
+//     }
+//     return ans;
+// }
+
+// console.log(sumOfArr(a));
+
+console.log(a.reduce(function (prev, current) { }, 0))
