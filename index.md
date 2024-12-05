@@ -23,6 +23,7 @@
 9. [Callback](./Namaste-JavaScript/05-pure-basics-of-js/07-call-back-functions.md)
 10. [Event loop](./Namaste-JavaScript/05-pure-basics-of-js/08-event-loop.md)
 11. [JavaScript Engine Overview](./Namaste-JavaScript/05-pure-basics-of-js/09-JS-Engine-overview.md)
+12. [Higher Order functions](./Namaste-JavaScript/05-pure-basics-of-js/010-higher-order-function.md)
 
 ## typeScript
 

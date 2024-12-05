@@ -198,8 +198,60 @@
 
 
 
-console.log('Start');
-setTimeout(function () {
-    console.log('After 0 Second');
-}, 0);
-console.log('End');
+// console.log('Start');
+// setTimeout(function () {
+//     console.log('After 0 Second');
+// }, 0);
+// console.log('End');
+
+const radius = [2, 4, 6, 10];
+/*
+const calculateArea = function (radius) {
+    let n = radius.length;
+    let ans = [];
+    for (let i = 0; i < n; i++) {
+        ans.push(Math.PI * radius[i] * radius[i]);
+    }
+    return ans;
+}
+
+const calculateCircumference = function (radius) {
+    let n = radius.length;
+    let ans = [];
+    for (let i = 0; i < n; i++) {
+        ans.push(2 * Math.PI * radius[i]);
+    }
+    return ans;
+}
+
+const calculateDiameter = function (radius) {
+    let n = radius.length;
+    let ans = [];
+    for (let i = 0; i < n; i++) {
+        ans.push(2 * radius[i]);
+    }
+    return ans;
+}
+    */
+const area = function (radius) {
+    return Math.PI * radius * radius
+}
+const diameter = function (radius) {
+    return 2 * radius
+}
+const Circumference = function (radius) {
+    return 2 * Math.PI * radius;
+}
+Array.prototype.calculate = function (logic) {
+    let n = this.length;
+    let ans = [];
+    for (let i = 0; i < n; i++) {
+        ans.push(logic(this[i]));
+    }
+    return ans;
+}
+// console.log(calculate(radius, area))
+// console.log(calculate(radius, Circumference))
+// console.log(calculate(radius, diameter))
+console.log(radius.map(area))
+console.log(radius.calculate(area))
