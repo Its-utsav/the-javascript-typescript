@@ -5,7 +5,7 @@
 
 ## javaScript
 
-- Wrting JavaScript and Learn with real world example.
+- Writing JavaScript and Learn with real world example.
 - [js](./javascript/readme.md)
 
 ---

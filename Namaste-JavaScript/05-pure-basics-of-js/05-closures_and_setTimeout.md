@@ -102,3 +102,65 @@ a();
 - here we create a new function inside the loop called `close` that take `x` as parameter , inside function we are printing the value of `x` after `x * 1000` second delay
 - for loop will run 1 to 5 and we are calling close function each time with the help of `i`
 - close function create a closures which capture the value of `x` which is nothing just value of `i`
+
+## trust issue with setTimeout
+
+- suppose we are executing this code
+
+```javascript
+console.log("start");
+setTimeout(function () {
+  console.log("Print After the 5 Second");
+}, 5000);
+console.log("end");
+
+// 1 million line of code
+```
+
+- above code have console.log and setTimeout which will going to be execute in 5 second , and assume we have 1 million line of code .
+
+- suppose 1 million line of code take 10 second to execute till execution on going timer for setTimeout will also reduce
+- We expect that setTimeout callback function should execute after 5 second .
+
+- But 1 million line of code take 10 second to execute so setTimeout function need to wait for 10 second due to callstack is not empty
+
+- so we can say that setTimeout will wait for certain amount of time but we can not guarantied it will definitely execute after mention amount of time
+
+- Know as concurrency model of JS . this is the logic behind trust issue with setTimeout
+
+- simple example for blocking the thread for `10` second
+
+```js
+console.log("Start");
+setTimeout(function () {
+  console.log("Hello From setTimeout");
+}, 5000);
+
+console.log("End");
+
+let startTime = new Date().getTime();
+let endTime = startTime;
+
+while (endTime < startTime + 10000) {
+  endTime = new Date().getTime();
+}
+
+console.log(`${endTime - startTime} second after setTimeout execute`);
+```
+
+---
+
+```javascript
+console.log("Start");
+setTimeout(function () {
+  console.log("After 0 Second");
+}, 0);
+console.log("End");
+```
+
+- Here setTimeout out has 0 millisecond delay.
+
+- Even though setTimeout out has 0 millisecond delay , it is asynchronous task , so call back will go in callback queue . and will enter after callstack is empty .
+
+- It is rarely used only when we need to defer some piece of code
+- once everything in callstack is execute and then we need to execute some piece of code than it may help .

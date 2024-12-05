@@ -196,19 +196,10 @@
 //   })
 // console.log('End')
 
+
+
 console.log('Start');
 setTimeout(function () {
-  console.log('Hello From setTimeout')
-}, 5000);
-fetch('https://latest.currency-api.pages.dev/v1/currencies/usd.json')
-  .then(function (res) {
-    console.log(res)
-    return res.json()
-  })
-  .then(function (res) {
-    console.log(res)
-  })
-  .catch(function (e) {
-    console.error(e)
-  })
+    console.log('After 0 Second');
+}, 0);
 console.log('End');
