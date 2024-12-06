@@ -279,7 +279,7 @@ console.log(radius.calculate(area))
 //     return el.toString(2);
 // }))
 
-let a = [45, 1, 7, 3, 0, 34, 12, 890, 14000]
+// let a = [45, 1, 7, 3, 0, 14000, 34, 12, 890]
 
 // function sumOfArr(a) {
 //     let ans = 0;
@@ -291,4 +291,72 @@ let a = [45, 1, 7, 3, 0, 34, 12, 890, 14000]
 
 // console.log(sumOfArr(a));
 
-console.log(a.reduce(function (prev, current) { }, 0))
+// console.log(a.reduce(function (accumulator, current) {
+//     return accumulator + current
+// }, 0))
+
+// console.log(a.reduce(function (max, current) {
+//     if (current > max) {
+//         max = current;
+//     }
+//     return max;
+// }, a[0]))
+
+
+// const data = [
+//     { firstName: "Utsav", lastName: "Dhimmar", age: 18 },
+//     { firstName: "Elon", lastName: "Musk", age: 53 },
+//     { firstName: "John", lastName: "Musk", age: 39 },
+//     { firstName: "Sam", lastName: "Altman", age: 39 },
+//     { firstName: "Roy", lastName: "Jason", age: 18 },
+// ]
+
+// // create a variable that have firstname+ " " + lastname
+
+// const names = data.map(function (person) {
+//     return `${person.firstName} ${person.lastName}`
+// })
+
+// // console.log(names)
+
+
+// // Avearge of ages
+
+// const avgAge = data.reduce(function (age, current) {
+//     return age += current.age / 3;
+// }, 0)
+
+// // console.log(avgAge)
+
+// const ageBasedData = data.reduce((obj, person) => {
+//     if (obj[person.age] > 0) {
+//         obj[person.age]++
+//     } else {
+//         obj[person.age] = 1;
+//     }
+//     return obj;
+// }, {});
+// // console.log(ageBasedData)
+
+// // first name of the all user whose age is less tham 30
+
+// const output = data
+//     .filter((person) => {
+//         if (person.age < 30) {
+//             return person;
+//         }
+//     })
+//     .map((person) => {
+//         return person.firstName;
+//     })
+
+// console.log(output)
+
+
+
+// console.log(data.reduce((acc, cur) => {
+//     if (cur.age < 30) {
+//         acc.push(cur.firstName)
+//     }
+//     return acc;
+// }, []));

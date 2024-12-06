@@ -57,6 +57,8 @@ console.log(
 
 ## reduce
 
+- reduce method take all values from the array and try to return single value / element from array
+
 - find the sum of all array element
 
 ```javascript
@@ -76,7 +78,52 @@ console.log(sumOfArr(a));
 - with reduce method
 
 ```javascript
-Array.reduce(function (accu, current) {}, initial value);
+Array.reduce(function (accumulator, current) {}, initial value);
 ```
 
-- previous value and current value are two most important parameter
+- accumulator value and current value are two most important parameter for the callback function , `current` parameter indicates the current element in array
+- second parameter for reduce is initial value . and for the first element accumulator value is initial value
+
+```js
+let a = [45, 1, 7, 3, 0, 14000, 34, 12, 890];
+console.log(
+  a.reduce(function (accumulator, current) {
+    return accumulator + current;
+  }, 0)
+);
+```
+
+```js
+let a = [45, 1, 7, 3, 0, 14000, 34, 12, 890];
+console.log(
+  a.reduce(function (max, current) {
+    if (current > max) {
+      max = current;
+    }
+    return max;
+  }, a[0])
+);
+```
+
+## chaining
+
+```js
+const data = [
+  { firstName: "Utsav", lastName: "Dhimmar", age: 18 },
+  { firstName: "Elon", lastName: "Musk", age: 53 },
+  { firstName: "John", lastName: "Musk", age: 39 },
+  { firstName: "Sam", lastName: "Altman", age: 39 },
+  { firstName: "Roy", lastName: "Jason", age: 18 },
+];
+const output = data
+  .filter((person) => {
+    if (person.age < 30) {
+      return person;
+    }
+  })
+  .map((person) => {
+    return person.firstName;
+  });
+
+console.log(output);
+```
