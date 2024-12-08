@@ -360,3 +360,13 @@ console.log(radius.calculate(area))
 //     }
 //     return acc;
 // }, []));
+
+let cart = ["shoes", "pants", "keyboard"]
+let api = '';
+api.createOrder(cart, function () {
+    api.makePayment(function () {
+        api.showSummary(function () {
+            api.updateWallet()
+        })
+    })
+})
