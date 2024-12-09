@@ -362,11 +362,35 @@ console.log(radius.calculate(area))
 // }, []));
 
 let cart = ["shoes", "pants", "keyboard"]
-let api = '';
-api.createOrder(cart, function () {
-    api.makePayment(function () {
-        api.showSummary(function () {
-            api.updateWallet()
-        })
+
+const orderId = createOrder(cart)
+orderId.
+    then(function (orderId) {
+        makePayment(orderId)
     })
+    .then(function (paymentInfo) {
+        paymentSummary(paymentInfo)
+    })
+    .then(function (balacnce) {
+        updateBalcne(balacnce)
+    })
+// makeAPayment(orderId)
+
+// createOrder(cart, function (orderId) {
+//     makePayment(orderId)
+// })
+
+// const promises = createOrder(cart);
+// promises.then(function () {
+//     makePayment()
+// })
+
+
+const GITHUB_URL = "https://api.github.com/users/Its-utsav";
+const user = fetch(GITHUB_URL)
+console.log(user)
+
+
+user.then(function (data) {
+    console.log(data)
 })

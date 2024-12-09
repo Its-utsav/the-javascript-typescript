@@ -79,5 +79,4 @@ api.createOrder(cart, function () {
       - And now `createOrder` responsibility of call `makePayment`
       - We loose to all control of `makePayment`
       - What if `createOrder` did not execute `makePayment` or fail to execute ? possible
-      - We will solve this problem in promises
-      <!-- TODO link with promises notes -->
+      - We will solve this problem in [promises](02-promises.md)

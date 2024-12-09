@@ -26,6 +26,11 @@
 12. [Higher Order functions](./Namaste-JavaScript/05-basics-of-js/010-higher-order-function.md)
 13. [Map-filter-reduce](./Namaste-JavaScript/05-basics-of-js/11-map-filter-reduce.md)
 
+--- Advanced stuff
+
+1. [callback](./Namaste-JavaScript/06-advanced-topics/01-callback.md)
+2. [Promise](./Namaste-JavaScript/06-advanced-topics/02-promises.md)
+
 ## typeScript
 
 - **ADD SOON**
