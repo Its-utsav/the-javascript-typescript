@@ -361,19 +361,19 @@ console.log(radius.calculate(area))
 //     return acc;
 // }, []));
 
-let cart = ["shoes", "pants", "keyboard"]
+// let cart = ["shoes", "pants", "keyboard"]
 
-const orderId = createOrder(cart)
-orderId.
-    then(function (orderId) {
-        makePayment(orderId)
-    })
-    .then(function (paymentInfo) {
-        paymentSummary(paymentInfo)
-    })
-    .then(function (balacnce) {
-        updateBalcne(balacnce)
-    })
+// const orderId = createOrder(cart)
+// orderId.
+//     then(function (orderId) {
+//         makePayment(orderId)
+//     })
+//     .then(function (paymentInfo) {
+//         paymentSummary(paymentInfo)
+//     })
+//     .then(function (balacnce) {
+//         updateBalcne(balacnce)
+//     })
 // makeAPayment(orderId)
 
 // createOrder(cart, function (orderId) {
@@ -386,11 +386,185 @@ orderId.
 // })
 
 
-const GITHUB_URL = "https://api.github.com/users/Its-utsav";
-const user = fetch(GITHUB_URL)
-console.log(user)
+// const GITHUB_URL = "https://api.github.com/users/Its-utsav";
+// const user = fetch(GITHUB_URL)
+// console.log(user)
 
 
-user.then(function (data) {
-    console.log(data)
-})
+// user.then(function (data) {
+//     console.log(data)
+// })
+
+// let cart = ["shoes", "pants", "keyboard"]
+
+// let orderId = createOrder([]);
+
+// // console.log(orderId); // Promise {<pending>}
+
+// orderId
+//     .then(function (orderId) {
+//         console.log(orderId)
+//         return orderId;
+//     }).catch(function (err) {
+//         console.log(err.message);
+//     })
+//     .then(function (orderID) {
+//         return makePayment(orderID)
+//     }).then(function (paymentInfo) {
+//         console.log(paymentInfo)
+//     })
+
+
+
+// function createOrder(cart) {
+//     const promiseRef = new Promise(function (sesolve, reject) {
+//         // we need to handle to part 
+//         // 1. for the resolve that means succesfull creation of orderId
+//         // 2. for the reject that means failed to create a orderId,  so need to return usefull error (may be) info to promise consumer 
+//         // first we need to validate cart , create cart than if everything on right track than we need to return the order ID
+//         // for this we need to known the Backend ... 
+//         // just dummy code
+
+//         if (!validateCart(cart)) {
+//             let error = new Error('Invalid Cart Info');
+//             setTimeout(function () {
+//                 reject(error);
+//             }, 3000)
+//         }
+
+//         // get orderID 
+
+//         let orderId = Math.floor(Math.random() * 100000);
+
+//         if (orderId) {
+//             setTimeout(function () {
+//                 sesolve(orderId)
+//             }, 3000)
+//         }
+//     })
+//     return promiseRef;
+// }
+
+
+// function validateCart(cart) {
+//     return cart.length !== 0;
+// }
+
+// function makePayment(orderId) {
+//     return new Promise(function (resolve, reject) {
+//         resolve("Paymant Done");
+//     })
+// }
+
+// thank you for creating amazing playlist . homework answer 
+
+let balacnce = 100000;
+
+let cart = [
+    {
+        item: "keyboard",
+        price: 3000
+    },
+    {
+        item: "Mouse",
+        price: 300,
+    },
+    {
+        item: "Web Cam",
+        price: 5000,
+    },
+    {
+        item: "Iphone 16",
+        price: 80000,
+    },
+]
+
+function createOrder(cart) {
+    function validateCart(cart) {
+        return cart.length !== 0;
+    }
+    return new Promise(function (resolve, reject) {
+        if (!validateCart(cart)) {
+            let error = new Error('Cart is Empty');
+            reject(error);
+        }
+        let orderId = Math.floor(Math.random() * 10000) + 'store@123';
+        let total = cart.reduce(function (total, current) {
+            total += current.price
+            return total;
+        }, 0)
+        if (orderId && total) {
+            resolve({
+                orderId,
+                total
+            });
+        }
+    })
+}
+
+function proceedToPayment(orderInfo) {
+    function enoughCheckBalnce(totalAmount) {
+        return totalAmount <= balacnce;
+    }
+    return new Promise(function (resolve, reject) {
+        if (enoughCheckBalnce(orderInfo.total) == false) {
+            reject(new Error('Not Enough Balance'))
+        } else {
+            resolve({
+                orderId: orderInfo.orderId,
+                total: orderInfo.total,
+                status: 'Payment successfully completed',
+                isPaymentDone: true,
+            })
+        }
+    })
+}
+
+function showOrderSummary(paymentInfo) {
+    return new Promise(function (resolve, reject) {
+        if (paymentInfo.isPaymentDone) {
+            let onlyProductNames = cart.map(function (product) {
+                return product.item;
+            })
+            resolve({
+                products: onlyProductNames,
+                total: paymentInfo.total,
+            })
+        } else {
+            reject(new Error("Can't show summary :("))
+        }
+    })
+}
+
+function updateWallet(paymentInfo) {
+    return new Promise(function (resolve, reject) {
+        balacnce = balacnce - paymentInfo.total;
+        if (balacnce >= 0) {
+            resolve({
+                status: "Wallet update",
+                balacnce
+            })
+        } else {
+            reject(new Error("unable to update wallet"))
+        }
+    })
+}
+
+let orderInfo = createOrder(cart)
+
+orderInfo
+    .then(function (orderInfo) {
+        return proceedToPayment(orderInfo)
+    })
+    .then(function (paymentInfo) {
+        return showOrderSummary(paymentInfo)
+    })
+    .then(function (paymentInfo) {
+        return updateWallet(paymentInfo)
+    })
+    .then(function (paymentInfo) {
+        console.log(paymentInfo)
+    })
+    .catch(function (err) {
+        console.error(err)
+    })
