@@ -119,7 +119,7 @@ user.then(function (data) {
 
 <center>or</center>
 
-- A `promise` object represents the eventual completion or failure of n asynchronous operation and its resulting value.
+- A `promise` object represents the eventual completion or failure of an asynchronous operation and its resulting value.
 
 ## promise chain
 

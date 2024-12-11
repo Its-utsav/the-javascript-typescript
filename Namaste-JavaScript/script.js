@@ -627,7 +627,7 @@ async function getData2() {
 getData2();
 
 */
-
+/*
 let t1p1, t2p1, t1p2, t2p2;
 
 const p1 = new Promise(function (resolve, reject) {
@@ -676,3 +676,26 @@ async function getData2() {
 
 getData2();
 
+*/
+/*
+const GITHUB_URL = "https://api.github.com/users/Its-utsav"
+
+async function getDataFromGithub() {
+    // fetch(GITHUB_URL)
+    //     .then((res) => res.json())
+    //     .then((data) => console.log(data))
+    //     .catch((err) => console.error(err))
+
+
+    let response = await fetch(GITHUB_URL);
+    let data = await response.json();
+    console.log(data)
+    // return data
+}
+
+// getDataFromGithub()
+//     .then((data) => console.log(data))
+//     .catch((err) => console.log(err))
+
+getDataFromGithub()
+*/

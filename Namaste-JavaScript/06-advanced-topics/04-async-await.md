@@ -3,8 +3,10 @@
 - [async await](#async-await)
   - [what is async](#what-is-async)
   - [await with async](#await-with-async)
+    - [what is async await function](#what-is-async-await-function)
   - [working of async await](#working-of-async-await)
     - [from observation](#from-observation)
+  - [real world example](#real-world-example)
   - [error handling](#error-handling)
   - [async await vs promise than catch](#async-await-vs-promise-than-catch)
 
@@ -94,6 +96,11 @@ await function lol() {};
 Uncaught SyntaxError: await is only valid in async functions and the top level bodies of modules
 ```
 
+### what is async await function
+
+- `async` is keyword used with function and `await` only can be used with only `async` function to handle promise and promise are asynchronous
+- what is promise ? : a promise is a eventual compilation or failure of an asynchronous operation .
+
 ## working of async await
 
 - promise use for handling asynchronous operations like request API like etc
@@ -155,7 +162,7 @@ Promised Resolved
 - after 10 second `After the await` , `Promised Resolved` will prints
 - What ??? 😕
 - Here we found the major different between async await and Promise.than / catch
-- With async await JavaScript engine **wait** (**_looks like_**) for complete the promise . why ? looks like check the [Working of async await section](#working-of-async-await)
+- With async await JavaScript engine **wait** (**_looks like_**) for complete the promise . why ? looks like check the [Check Observation part](#from-observation)
 - But with Promise.then / catch we notice that JavaScript did not wait for promise to be complete it's execution
 
 - two `await` in single `async` function
@@ -349,6 +356,85 @@ async function getData2() {
 }
 ```
 
+## real world example
+
+- with GitHub URL and fetch
+- `fetch()` provided by JavaScript engine
+- `fetch()` return `Response` Object in the form of Promise than for taking data from the `Response` Object we need to resolve that promise
+- `fetch()` -> `Response` Object => `Response.json()`
+<!-- TODO working of fetch() https://api.example.com/data -->
+- with `then`
+
+```js
+const GITHUB_URL = "https://api.github.com/users/Its-utsav";
+
+async function getDataFromGithub() {
+  fetch(GITHUB_URL)
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.error(err));
+}
+
+getDataFromGithub();
+```
+
+- with `async-await`
+
+```js
+const GITHUB_URL = "https://api.github.com/users/Its-utsav";
+
+async function getDataFromGithub() {
+  let response = await fetch(GITHUB_URL); // suspend till it resolve and return response object
+  let data = await response.json(); // after getting the resolve / recevied response object it will again back to callstack
+  console.log(data);
+}
+
+getDataFromGithub();
+```
+
 ## error handling
 
+- in promise for handling error we have catch block (for success we have then block )
+- in async await we have try... catch block
+- try block for handling success block for promise and catch for handling error
+
+```js
+const GITHUB_URL = "https://api.github.com/users/Its-utsav";
+
+async function getDataFromGithub() {
+  try {
+    // success part of the promise
+    let response = await fetch(GITHUB_URL);
+    let data = await response.json();
+    console.log(data);
+  } catch (error) {
+    // failure part of the promise
+    console.log(error);
+  }
+}
+
+getDataFromGithub();
+```
+
+- we can even use then / catch block because of `async` function return a promise
+
+```js
+const GITHUB_URL = "https://api.github.com/users/Its-utsav";
+
+async function getDataFromGithub() {
+  let response = await fetch(GITHUB_URL);
+  let data = await response.json();
+  return data; /* Only for then block aka resolve part not need to write in case of error*/
+}
+
+getDataFromGithub()
+  .then((data) => console.log(data))
+  .catch((err) => console.log(err));
+```
+
 ## async await vs promise than catch
+
+- `async await` are just a Syntactic Sugar behind the scene it just using Promise.then/catch
+- Both are good `async await` is new way to write
+- `async await` we do not need to handle promise chaining
+- It is advisable to use `async await` have better code readability
