@@ -457,7 +457,7 @@ console.log(radius.calculate(area))
 // }
 
 // thank you for creating amazing playlist . homework answer 
-
+/*
 let balacnce = 100000;
 
 let cart = [
@@ -568,3 +568,111 @@ orderInfo
     .catch(function (err) {
         console.error(err)
     })
+
+    */
+
+// let ans = prompt('Are you over 18 ?', 'no');
+// const p = new Promise(function (resolve, reject) {
+//     resolve('Promise resolved !!');
+// })
+
+// function getData() {
+//     p.then((data) => console.log(data))
+// }
+// getData()
+
+
+// async function getData2() {
+//     let data = await p;
+//     console.log(data)
+// }
+// getData2()
+/*
+const p1 = new Promise(function (resolve, reject) {
+    setTimeout(function () {
+        resolve('Promised Resolved');
+    }, 5000)
+})
+
+// function getData() {
+//     console.log('Before consuming promise');
+//     p.then(function (data) { console.log(data) });
+//     console.log('After consuming promise');
+// }
+// getData()
+const p2 = new Promise(function (resolve, reject) {
+    setTimeout(function () {
+        resolve('Promised Resolved');
+    }, 10000)
+})
+
+async function getData2() {
+    console.log('Hello World !!');
+    // let t1 = new Date().getSeconds();
+    let val = await p1;
+    console.log('first Promise Resloved');
+    console.log(val);
+    // let t2 = new Date().getSeconds();
+    // console.log(t2 - t1, t1, t2);
+
+    // let l1 = new Date().getSeconds();
+    let val2 = await p2;
+    console.log('Second Promise Resloved');
+    console.log(val2);
+    // let l2 = new Date().getSeconds();
+    // console.log(l2 - l1, l1, l2)
+
+    // console.log(l2 - t1)
+}
+getData2();
+
+*/
+
+let t1p1, t2p1, t1p2, t2p2;
+
+const p1 = new Promise(function (resolve, reject) {
+    t1p1 = new Date().getSeconds()
+    setTimeout(function () {
+        console.log(t1p1)
+        resolve('Promised Resolved');
+        t2p1 = new Date().getSeconds()
+    }, 5000)
+})
+
+// function getData() {
+//     console.log('Before consuming promise');
+//     p.then(function (data) { console.log(data) });
+//     console.log('After consuming promise');
+// }
+// getData()
+
+const p2 = new Promise(function (resolve, reject) {
+    t1p2 = new Date().getSeconds();
+    setTimeout(function () {
+        resolve('Promised Resolved');
+        t2p2 = new Date().getSeconds()
+    }, 10000)
+})
+
+async function getData2() {
+    console.log('Hello World !!');
+    // let t1 = new Date().getSeconds();
+    let val = await p1;
+    console.log('first Promise Resloved');
+    console.log(val);
+    // let t2 = new Date().getSeconds();
+    // console.log(t2 - t1, t1, t2);
+
+    // let l1 = new Date().getSeconds();
+    let val2 = await p2;
+    console.log('Second Promise Resloved');
+    console.log(val2);
+    // let l2 = new Date().getSeconds();
+    // console.log(l2 - l1, l1, l2)
+
+    // console.log(l2 - t1)
+    console.log(`Total time takes for function execution ${t2p2 - t1p1}, first promise resolved in ${t2p1 - t1p1} , second promise resolved in ${t2p2 - t1p2} `);
+}
+
+getData2();
+
