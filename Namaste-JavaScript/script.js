@@ -699,3 +699,33 @@ async function getDataFromGithub() {
 
 getDataFromGithub()
 */
+
+
+const p1 = new Promise(function (resolve, reject) {
+    setTimeout(function () {
+        // resolve('Promise One is resolved');
+        reject('Promise One is rejected');
+    }, 5000)
+})
+
+const p2 = new Promise(function (resolve, reject) {
+    setTimeout(function () {
+        // resolve('Promise Two is resolved');
+        reject('Promise Two is rejected');
+    }, 3000)
+})
+
+const p3 = new Promise(function (resolve, reject) {
+    setTimeout(function () {
+        // resolve('Promise Three is resolved');
+        reject('Promise Three is rejected');
+    }, 1000)
+})
+
+let prm = Promise.any([p1, p2, p3])
+prm.then(function (data) {
+    console.log(data)
+}).catch(function (err) {
+    console.error(err)
+    console.error(err.errors)
+}) 
