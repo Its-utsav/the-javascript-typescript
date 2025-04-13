@@ -1,5 +1,6 @@
 markdown: kramdown
 theme: minima
+source: ./web/JavaScript/Namaste-JavaScript/readme.md
 exclude:
   - Gemfile
   - Gemfile.lock
