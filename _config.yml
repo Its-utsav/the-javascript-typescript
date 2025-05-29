@@ -1,7 +1,3 @@
 markdown: kramdown
 theme: minima
-source: JavaScript
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - web/*
+source: web/JavaScript/
