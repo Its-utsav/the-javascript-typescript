@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>An example of closures</title>
+  </head>
+  <body style="background-color: #131313">
+    <button id="red">red</button>
+    <button id="yellow">yellow</button>
+
+    <script async defer>
+      //   document.getElementById("red").onclick = function () {
+      //     document.body.style.backgroundColor = "red";
+      //   };
+
+      //   document.getElementById("yellow").onclick = function () {
+      document.body.style.backgroundColor = "yellow";
+      //   };
+      function changeBg(color) {
+        // create a function
+        // with closure
+        return function () {
+          document.body.style.backgroundColor = color;
+        };
+      }
+
+      document.getElementById("red").onclick = changeBg("red");
+      document.getElementById("yellow").onclick = changeBg("yellow");
+      // oops instance chaging color
+    </script>
+  </body>
+</html>

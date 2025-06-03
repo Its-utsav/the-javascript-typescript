@@ -1,0 +1,1922 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript</title>
+    <style>
+      /* From extension vscode.github */
+      /*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+      .vscode-dark img[src$="\#gh-light-mode-only"],
+      .vscode-light img[src$="\#gh-dark-mode-only"],
+      .vscode-high-contrast:not(.vscode-high-contrast-light)
+        img[src$="\#gh-light-mode-only"],
+      .vscode-high-contrast-light img[src$="\#gh-dark-mode-only"] {
+        display: none;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css"
+    />
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI",
+          system-ui, "Ubuntu", "Droid Sans", sans-serif;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+    </style>
+    <style>
+      .task-list-item {
+        list-style-type: none;
+      }
+
+      .task-list-item-checkbox {
+        margin-left: -20px;
+        vertical-align: middle;
+        pointer-events: none;
+      }
+    </style>
+    <style>
+      :root {
+        --color-note: #0969da;
+        --color-tip: #1a7f37;
+        --color-warning: #9a6700;
+        --color-severe: #bc4c00;
+        --color-caution: #d1242f;
+        --color-important: #8250df;
+      }
+    </style>
+    <style>
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --color-note: #2f81f7;
+          --color-tip: #3fb950;
+          --color-warning: #d29922;
+          --color-severe: #db6d28;
+          --color-caution: #f85149;
+          --color-important: #a371f7;
+        }
+      }
+    </style>
+    <style>
+      .markdown-alert {
+        padding: 0.5rem 1rem;
+        margin-bottom: 16px;
+        color: inherit;
+        border-left: 0.25em solid #888;
+      }
+
+      .markdown-alert > :first-child {
+        margin-top: 0;
+      }
+
+      .markdown-alert > :last-child {
+        margin-bottom: 0;
+      }
+
+      .markdown-alert .markdown-alert-title {
+        display: flex;
+        font-weight: 500;
+        align-items: center;
+        line-height: 1;
+      }
+
+      .markdown-alert .markdown-alert-title .octicon {
+        margin-right: 0.5rem;
+        display: inline-block;
+        overflow: visible !important;
+        vertical-align: text-bottom;
+        fill: currentColor;
+      }
+
+      .markdown-alert.markdown-alert-note {
+        border-left-color: var(--color-note);
+      }
+
+      .markdown-alert.markdown-alert-note .markdown-alert-title {
+        color: var(--color-note);
+      }
+
+      .markdown-alert.markdown-alert-important {
+        border-left-color: var(--color-important);
+      }
+
+      .markdown-alert.markdown-alert-important .markdown-alert-title {
+        color: var(--color-important);
+      }
+
+      .markdown-alert.markdown-alert-warning {
+        border-left-color: var(--color-warning);
+      }
+
+      .markdown-alert.markdown-alert-warning .markdown-alert-title {
+        color: var(--color-warning);
+      }
+
+      .markdown-alert.markdown-alert-tip {
+        border-left-color: var(--color-tip);
+      }
+
+      .markdown-alert.markdown-alert-tip .markdown-alert-title {
+        color: var(--color-tip);
+      }
+
+      .markdown-alert.markdown-alert-caution {
+        border-left-color: var(--color-caution);
+      }
+
+      .markdown-alert.markdown-alert-caution .markdown-alert-title {
+        color: var(--color-caution);
+      }
+    </style>
+  </head>
+  <body class="vscode-body vscode-light">
+    <h1 id="javascript">JavaScript</h1>
+    <h2 id="toc">TOC</h2>
+    <ul>
+      <li>
+        <a href="#javascript">JavaScript</a>
+        <ul>
+          <li><a href="#toc">TOC</a></li>
+          <li><a href="#variables">Variables</a></li>
+          <li><a href="#datatype">DataType</a></li>
+          <li>
+            <a href="#type-conversion-and-operations"
+              >Type conversion And operations</a
+            >
+            <ul>
+              <li>
+                <a href="#memes-with-js-addition-"
+                  >MEMES WITH JS Addition 😵😂</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li><a href="#strings">Strings</a></li>
+          <li><a href="#number-and-math-object">Number and Math Object</a></li>
+          <li><a href="#array">Array</a></li>
+          <li><a href="#object">Object</a></li>
+          <li><a href="#date">Date</a></li>
+          <li>
+            <a href="#functions">Functions</a>
+            <ul>
+              <li><a href="#scopes">scopes</a></li>
+              <li>
+                <a href="#iife-immediately-invoked-function-expression"
+                  >IIFE (Immediately Invoked Function Expression)</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li><a href="#notes">Notes</a></li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="variables">Variables</h2>
+    <ul>
+      <li>
+        <code>let</code> , <code>var</code> , <code>const</code> three way to
+        declare variable in JS
+      </li>
+      <li>
+        <code>const</code> we can't change value , can't reassign the value , we
+        must need to assign value when we use <code>const</code> it has block
+        scope <code>{ // this is scope }</code>
+      </li>
+      <li>
+        <code>let</code> value assign is optional we can reassign value and it
+        has also block scope
+      </li>
+      <li>
+        <code>var</code> is global scope always in window object , now we don't
+        use <code>var</code>
+      </li>
+      <li>
+        <code>var</code> has many problem , if we can avoid the problems than we
+        can use it but not recommended
+      </li>
+      <li>
+        if variable value is not assign then it set <code>undefined</code> as
+        default value - it is very special
+      </li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-keyword">let</span> age = <span class="hljs-number">18</span>; <span class="hljs-comment">// console.log(age) -&gt; 18</span>
+<span class="hljs-keyword">let</span> x;        <span class="hljs-comment">// console.log(x) -&gt; undefined</span>
+<span class="hljs-keyword">var</span> p = <span class="hljs-number">12</span>;   <span class="hljs-comment">// console.log(p) -&gt; 12</span>
+<span class="hljs-keyword">var</span> lol;      <span class="hljs-comment">// console.log(lol) -&gt; undefined</span>
+<span class="hljs-keyword">const</span> y = <span class="hljs-number">100</span> <span class="hljs-comment">// console.log(y) -&gt; 100</span>
+<span class="hljs-keyword">const</span> me;     <span class="hljs-comment">// SyntaxError: Missing initializer in const declaration</span>
+</code></pre>
+    <h2 id="datatype">DataType</h2>
+    <ul>
+      <li>
+        Their are Primitive data types (most basics data types , may be some are
+        immutable, call by value)
+      </li>
+    </ul>
+    <ol>
+      <li>
+        <code>number</code> - store numeric value even with floating points
+        <code>let age = 18</code> , <code>let pi = 3.14</code>;
+        <a href="#number-and-math-object">visit number</a>
+      </li>
+      <li>
+        <code>string</code> - store character array
+        <a href="#strings">visit string</a>
+      </li>
+    </ol>
+    <pre><code class="language-js"><span class="hljs-keyword">let</span> name1 = <span class="hljs-string">&quot;javascript&quot;</span>;
+<span class="hljs-comment">//or</span>
+<span class="hljs-keyword">let</span> name2 = <span class="hljs-string">&quot;mark&quot;</span>;
+<span class="hljs-comment">// or</span>
+<span class="hljs-keyword">let</span> name3 = <span class="hljs-string">`hello`</span>; <span class="hljs-comment">// -&gt; string literal</span>
+</code></pre>
+    <ol start="3">
+      <li>
+        <code>boolean</code> - Represent only <code>true</code> and
+        <code>false</code>
+      </li>
+      <li>
+        <code>null</code> - Standalone value and datatype is <code>object</code>
+      </li>
+      <li>
+        <code>undefined</code> - Default value for all variable , if value is
+        not define the we got<code>undefined</code>
+      </li>
+      <li>
+        <code>symbol</code> - <strong>Always unique</strong> added in
+        <code>ES6</code>
+      </li>
+      <li>
+        <code>bigInt</code> - When we need to perform operations on larger
+        number than bigInt can be used but , it is rarely used
+        <code>let bigNum = 1234n;</code>
+      </li>
+    </ol>
+    <hr />
+    <p>We use <code>typeof</code> key word to check datatype of the variable</p>
+    <pre><code class="language-js"><span class="hljs-keyword">let</span> name = <span class="hljs-string">&quot;js&quot;</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-keyword">typeof</span> name); <span class="hljs-comment">// string</span>
+<span class="hljs-keyword">let</span> age = <span class="hljs-number">18</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-keyword">typeof</span> age); <span class="hljs-comment">// number</span>
+<span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-keyword">typeof</span> arr); <span class="hljs-comment">// object OMG</span>
+</code></pre>
+    <ul>
+      <li>Famous interview question what is the output of this program</li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-keyword">typeof</span> <span class="hljs-literal">null</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-keyword">typeof</span> <span class="hljs-literal">undefined</span>);
+</code></pre>
+    <hr />
+    <details>
+      <summary>Answer</summary>
+      <hr />
+      <pre><code class="language-js">object;
+<span class="hljs-literal">undefined</span>;
+</code></pre>
+      <hr />
+      <ul>
+        <li>
+          <p>Explanation :-</p>
+        </li>
+        <li>
+          <p>
+            <code>null</code> and <code>undefined</code> both are special value
+            that represent the absence of a value / Data
+          </p>
+        </li>
+        <li>
+          <p>
+            Read about
+            <a href="02-part.md/#how-js-work">JavaScript execution context</a>
+          </p>
+        </li>
+        <li>
+          <p>null :-</p>
+          <ul>
+            <li><code>null</code> -&gt; <code>object</code></li>
+            <li>
+              Some people (developer suggest that) think this is is mistake in
+              language design
+            </li>
+            <li>
+              <code>null</code> represent no value or no object , it need to be
+              assign <code>explicitly</code> , assign by the developer
+            </li>
+            <li>
+              It may be a bug in JavaScript implementation that why it return
+              <code>type</code> for <code>null</code> is <code>object</code>
+            </li>
+            <li>
+              This bug never fix because if it fixed than it would broke
+              existing code on the web.
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>undefined:-</p>
+          <ul>
+            <li>
+              <code>undefined</code> is a primitive datatype and automatically
+              assign to the all variable (even function parameter , return
+              values ) due to phase 1 <code>memory creation</code> of JavaScript
+              execution context
+            </li>
+            <li>
+              Developer can assign <code>undefined</code> to the variable when
+              we needed
+            </li>
+            <li>
+              That's why it return <code>type</code> for
+              <code>undefined</code> is <code>undefined</code> not an
+              <code>object</code>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </details>
+    <hr />
+    <p><strong>Notes</strong></p>
+    <ul>
+      <li>
+        JavaScript change over the time , means JS in <code>2015</code> and JS
+        in <code>2024</code> (this notes writing time year) or nay year is very
+        different
+      </li>
+      <li>
+        Once we write <code>&quot;use strict&quot;</code> all code in JS file
+        will treat as newer version of JS , If we did not write
+        <code>&quot;use strict&quot;</code> than
+        <strong>sloppy mode</strong> mode but not an official designation
+      </li>
+      <li>
+        JavaScript can run at both at client (by default in browser) and server
+        (with help of <code>node js</code> , or other JS runtime like
+        <code>deno js</code> , <code>bun js</code>)
+      </li>
+      <li>
+        In any programming language code must be readable and easy to understand
+      </li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(
+  <span class="hljs-comment">//</span>
+  <span class="hljs-number">3</span> +
+    <span class="hljs-comment">//</span>
+    <span class="hljs-comment">//</span>
+    <span class="hljs-number">3</span>
+); <span class="hljs-comment">// to bad</span>
+</code></pre>
+    <ul>
+      <li>why primitive are call by value ?</li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">logNum</span>(<span class="hljs-params">num</span>) {
+  num = <span class="hljs-number">100</span>; <span class="hljs-comment">// change the value in function</span>
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Value of number Inside the function  = &quot;</span>, num); <span class="hljs-comment">// chnage</span>
+}
+
+<span class="hljs-keyword">let</span> num = <span class="hljs-number">20</span>;
+<span class="hljs-title function_">logNum</span>(num);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Value of number Outside the function  = &quot;</span>, num); <span class="hljs-comment">// still 20</span>
+</code></pre>
+    <ul>
+      <li><code>num</code> store first 20</li>
+      <li>
+        inside the function <code>num</code> value changed to <code>100</code>
+      </li>
+      <li>print <code>Value of number Inside the function = 100</code></li>
+      <li>function scope destroy</li>
+      <li>than console.log that is outside of a function print</li>
+      <li><code>Value of number Outside the function = 20</code></li>
+      <li>Value is same still 20 it did not changed</li>
+    </ul>
+    <hr />
+    <ul>
+      <li>Non-Primitive data types (call by references)</li>
+    </ul>
+    <ol>
+      <li>Array - Collection of value store in continue memory location</li>
+    </ol>
+    <pre><code class="language-js"><span class="hljs-keyword">let</span> arr = [
+  <span class="hljs-number">1</span>,
+  <span class="hljs-number">3.14</span>,
+  <span class="hljs-string">&quot;Hello&quot;</span>,
+  <span class="hljs-literal">true</span>,
+  [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>],
+  {
+    <span class="hljs-comment">// this is object</span>
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Mark&quot;</span>,
+    <span class="hljs-attr">age</span>: <span class="hljs-number">17</span>,
+  },
+  <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;omg&quot;</span>);
+  },
+];
+</code></pre>
+    <ol start="2">
+      <li>
+        Object - Most IMP thing in JS ,it's key value pair or value with named
+        index
+      </li>
+    </ol>
+    <pre><code class="language-js"><span class="hljs-keyword">let</span> user = {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Utsav&quot;</span>,
+  <span class="hljs-attr">age</span>: <span class="hljs-number">17</span>,
+  <span class="hljs-attr">marks</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>],
+  <span class="hljs-attr">printName</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(user.<span class="hljs-property">name</span>); <span class="hljs-comment">// utsav</span>
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span>); <span class="hljs-comment">// Utsav</span>
+  },
+};
+user.<span class="hljs-title function_">printName</span>();
+</code></pre>
+    <ol start="3">
+      <li>Function</li>
+    </ol>
+    <ul>
+      <li>Reusable code of block</li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">abc</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Hello World&quot;</span>);
+}
+</code></pre>
+    <ul>
+      <li>why non primitive are call by references ?</li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">logArr</span>(<span class="hljs-params">arr</span>) {
+  arr.<span class="hljs-title function_">push</span>(<span class="hljs-number">30</span>); <span class="hljs-comment">// Add into array</span>
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Array values Inside the function  = &quot;</span>, arr);
+}
+
+<span class="hljs-keyword">let</span> arr = [<span class="hljs-number">10</span>, <span class="hljs-number">20</span>];
+<span class="hljs-title function_">logArr</span>(arr);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Array values Outside the function  = &quot;</span>, arr);
+</code></pre>
+    <p style="text-align: center">Output</p>
+    <pre><code class="language-txt">Array values Inside the function  =  [ 10, 20, 30 ]
+Array values Outside the function  =  [ 10, 20, 30 ]
+</code></pre>
+    <ul>
+      <li>
+        In above we create array , than we add <code>30</code> in function
+      </li>
+      <li>
+        Even though we add new value in <code>arr</code> in function it effect
+        original array
+      </li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">logObj</span>(<span class="hljs-params">obj</span>) {
+  obj[<span class="hljs-string">&quot;gender&quot;</span>] = <span class="hljs-string">&quot;male&quot;</span>;
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Obj values Inside the function  = &quot;</span>, obj);
+}
+
+<span class="hljs-keyword">let</span> obj = {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Utsav&quot;</span>,
+  <span class="hljs-attr">age</span>: <span class="hljs-number">18</span>,
+};
+<span class="hljs-title function_">logObj</span>(obj);
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Obj values Outside the function  = &quot;</span>, obj);
+</code></pre>
+    <p style="text-align: center">Output</p>
+    <pre><code class="language-txt">Obj values Inside the function  =  { name: &#x27;Utsav&#x27;, age: 18, gender: &#x27;male&#x27; }
+Obj values Outside the function  =  { name: &#x27;Utsav&#x27;, age: 18, gender: &#x27;male&#x27; }
+</code></pre>
+    <ul>
+      <li>two types of memory</li>
+      <li>
+        Stack (for storing Primitive data types) , Heap (for storing Non -
+        primitive data types)
+      </li>
+      <li>
+        stack memory - we get a copy of a variable so original value won't
+        effect
+      </li>
+      <li>
+        heap memory - we get reference of variable (modification apply in even
+        in original)
+      </li>
+      <li>
+        some graphical representation
+        <img
+          src="file:///d:\codes\the-javascript-typescript\javascript\notes-of-js\images\stack-heap.png"
+          alt="image of stack and heap memory"
+        />
+      </li>
+    </ul>
+    <h2 id="type-conversion-and-operations">Type conversion And operations</h2>
+    <ul>
+      <li>
+        In JS type conversion is very nightmare topic but not a impossible
+      </li>
+      <li>
+        JS is dynamic type language not a static typed language means we don't
+        need to define type of the variable at declaration
+      </li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-keyword">let</span> score = <span class="hljs-number">100</span>; <span class="hljs-comment">// here we not specify the type of the variable</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-keyword">typeof</span> score); <span class="hljs-comment">// number</span>
+</code></pre>
+    <hr />
+    <pre><code class="language-js"><span class="hljs-keyword">let</span> score = <span class="hljs-string">&quot;100&quot;</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-keyword">typeof</span> score); <span class="hljs-comment">// string</span>
+</code></pre>
+    <ul>
+      <li>We can convert the string type variable into number ⚠️</li>
+      <li>In below code I use Number Constructor</li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-keyword">let</span> score = <span class="hljs-string">&quot;100&quot;</span>;
+<span class="hljs-keyword">let</span> newScore = <span class="hljs-title class_">Number</span>(score); <span class="hljs-comment">// now the string score convert into number</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-keyword">typeof</span> newScore); <span class="hljs-comment">// number</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(score); <span class="hljs-comment">// &quot;100&quot;</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(newScore); <span class="hljs-comment">// 100</span>
+</code></pre>
+    <ul>
+      <li>Till now nothing to confusing</li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-keyword">let</span> score = <span class="hljs-string">&quot;why i am score&quot;</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-keyword">typeof</span> score); <span class="hljs-comment">// string</span>
+
+<span class="hljs-keyword">let</span> newScore = <span class="hljs-title class_">Number</span>(score); <span class="hljs-comment">// we are trying to convert string variable into number</span>
+
+<span class="hljs-comment">// HOW IS THIS POSSIBLE ?</span>
+<span class="hljs-comment">// we know it is wrong</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-keyword">typeof</span> newScore); <span class="hljs-comment">// number</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(newScore); <span class="hljs-comment">// NaN</span>
+</code></pre>
+    <ul>
+      <li>
+        <code>&quot;why i am score&quot;</code> string can't convert into number
+        that why it return <code>NaN</code>
+      </li>
+      <li>
+        It is not a bug , but basically JavaScript try to convert in number but
+        it can't convert so it return <code>NaN</code>
+      </li>
+      <li>Learn latter about <code>NaN</code></li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-keyword">let</span> num = <span class="hljs-literal">null</span>;
+<span class="hljs-keyword">let</span> newNum = <span class="hljs-title class_">Number</span>(num);
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(newNum); <span class="hljs-comment">// 0</span>
+<span class="hljs-comment">// null -&gt; 0 ⭐</span>
+
+<span class="hljs-keyword">let</span> x = <span class="hljs-literal">undefined</span>;
+<span class="hljs-keyword">let</span> newX = <span class="hljs-title class_">Number</span>(x);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(newX);
+<span class="hljs-comment">// undefined -&gt; NaN ⭐</span>
+
+<span class="hljs-keyword">let</span> x = <span class="hljs-literal">true</span>;
+<span class="hljs-keyword">let</span> newX = <span class="hljs-title class_">Number</span>(x);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(newX); <span class="hljs-comment">// 1  true -&gt; 1⭐</span>
+
+<span class="hljs-keyword">let</span> x = <span class="hljs-literal">false</span>;
+<span class="hljs-keyword">let</span> newX = <span class="hljs-title class_">Number</span>(x);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(newX); <span class="hljs-comment">// 0 false -&gt; 0 ⭐</span>
+
+<span class="hljs-keyword">let</span> isLoggedIn = <span class="hljs-number">1</span>; <span class="hljs-comment">// here 1 convert into true</span>
+<span class="hljs-keyword">let</span> boolValue = <span class="hljs-title class_">Boolean</span>(isLoggedIn);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(boolValue); <span class="hljs-comment">//  true</span>
+
+<span class="hljs-comment">// for 0 numeric value its boolean value will be false</span>
+<span class="hljs-comment">// 1 -&gt; true</span>
+<span class="hljs-comment">// 0 -&gt; false</span>
+
+<span class="hljs-keyword">let</span> age = <span class="hljs-string">&quot;Hello&quot;</span>;
+
+<span class="hljs-keyword">let</span> boolValue = <span class="hljs-title class_">Boolean</span>(age);
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(boolValue); <span class="hljs-comment">// true</span>
+
+<span class="hljs-keyword">let</span> wrongAge = <span class="hljs-string">&quot;&quot;</span>;
+<span class="hljs-keyword">let</span> bool2 = <span class="hljs-title class_">Boolean</span>(wrongAge);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(bool2); <span class="hljs-comment">// false</span>
+<span class="hljs-comment">// it &quot;&quot; convert into false</span>
+
+<span class="hljs-keyword">let</span> spaceAge = <span class="hljs-string">&quot; &quot;</span>; <span class="hljs-comment">// space</span>
+<span class="hljs-keyword">let</span> bool3 = <span class="hljs-title class_">Boolean</span>(wrongAge);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(bool3); <span class="hljs-comment">// true</span>
+
+<span class="hljs-keyword">let</span> someNum = <span class="hljs-number">10000</span>;
+<span class="hljs-keyword">let</span> strNum = <span class="hljs-title class_">String</span>(someNum);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(strNum);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-keyword">typeof</span> strNum);
+
+<span class="hljs-comment">// and many more conversion possible</span>
+</code></pre>
+    <ul>
+      <li>about come conversion</li>
+    </ul>
+    <table>
+      <thead>
+        <tr>
+          <th>Value</th>
+          <th style="text-align: center">Conversion Type</th>
+          <th style="text-align: right">Output</th>
+          <th style="text-align: right">Output type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>&quot;1&quot;</td>
+          <td style="text-align: center">Number</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">Number</td>
+        </tr>
+        <tr>
+          <td>&quot;Bananas&quot;</td>
+          <td style="text-align: center">Number</td>
+          <td style="text-align: right">NaN</td>
+          <td style="text-align: right">Number</td>
+        </tr>
+        <tr>
+          <td>null</td>
+          <td style="text-align: center">Number</td>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">Number</td>
+        </tr>
+        <tr>
+          <td>undefined</td>
+          <td style="text-align: center">Number</td>
+          <td style="text-align: right">NaN</td>
+          <td style="text-align: right">Number</td>
+        </tr>
+        <tr>
+          <td>true</td>
+          <td style="text-align: center">Number</td>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">Number</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td style="text-align: center">Boolean</td>
+          <td style="text-align: right">true</td>
+          <td style="text-align: right">Boolean</td>
+        </tr>
+        <tr>
+          <td>&quot;&quot;</td>
+          <td style="text-align: center">Boolean</td>
+          <td style="text-align: right">false</td>
+          <td style="text-align: right">Boolean</td>
+        </tr>
+        <tr>
+          <td>&quot;hi&quot;</td>
+          <td style="text-align: center">Boolean</td>
+          <td style="text-align: right">true</td>
+          <td style="text-align: right">Boolean</td>
+        </tr>
+      </tbody>
+    </table>
+    <ul>
+      <li>and more type conversion possible</li>
+    </ul>
+    <ul>
+      <li>
+        <p>what is <code>NaN</code> ?</p>
+        <ul>
+          <li><code>NaN</code> stand for Not a Number</li>
+          <li>
+            It check given parameter is <strong>not a number</strong> or not
+          </li>
+          <li>
+            It return <code>false</code> if give parameter is number even if we
+            enter string number like '110' due to type conversion .
+          </li>
+          <li>
+            It return <code>true</code> if given parameter is
+            <strong>NOT A NUMBER</strong>
+          </li>
+          <li>
+            Its type is <code>number</code> . <code>typeof NaN</code> -&gt;
+            <code>number</code>
+          </li>
+          <li>
+            <a href="#number-and-math-object"
+              >go on numbers to read about NaN</a
+            >
+          </li>
+        </ul>
+        <pre><code class="language-js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-built_in">isNaN</span>(<span class="hljs-string">&quot;1&quot;</span>)); <span class="hljs-comment">// false due to type conversion</span>
+<span class="hljs-comment">// &quot;1&quot; -&gt; 1</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-built_in">isNaN</span>(<span class="hljs-string">&quot;LOL&quot;</span>)); <span class="hljs-comment">// true</span>
+</code></pre>
+      </li>
+    </ul>
+    <ul>
+      <li><code>+</code> can use for string concatenations</li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-keyword">let</span> str1 = <span class="hljs-string">&quot;Hello &quot;</span>;
+<span class="hljs-keyword">let</span> str2 = <span class="hljs-string">&quot;World !!!&quot;</span>;
+<span class="hljs-keyword">let</span> str3 = str1 + str2;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str3); <span class="hljs-comment">// Hello World !!!</span>
+<span class="hljs-comment">// string concatenations</span>
+</code></pre>
+    <hr />
+    <h3 id="memes-with-js-addition-">MEMES WITH JS Addition 😵😂</h3>
+    <hr />
+    <pre><code class="language-js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">1</span> + <span class="hljs-string">&quot;2&quot;</span>); <span class="hljs-comment">// 12 in string</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;1&quot;</span> + <span class="hljs-number">2</span>); <span class="hljs-comment">// 12 in string</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">1</span> + +<span class="hljs-string">&quot;2&quot;</span>); <span class="hljs-comment">// but 3</span>
+<span class="hljs-comment">// 1  -&gt; 1</span>
+<span class="hljs-comment">// +&quot;2&quot;-&gt; 2</span>
+<span class="hljs-comment">// 1 + 2 = 3</span>
+</code></pre>
+    <hr />
+    <pre><code class="language-js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">1</span> + <span class="hljs-number">2</span> + <span class="hljs-string">&quot;3&quot;</span>); <span class="hljs-comment">// 33</span>
+<span class="hljs-comment">// 1 + 2 = 3</span>
+<span class="hljs-comment">// 3 + &quot;3&quot; = 33</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;1&quot;</span> + <span class="hljs-number">2</span> + <span class="hljs-number">3</span>); <span class="hljs-comment">// 123</span>
+<span class="hljs-comment">// &quot;1&quot; + 2 = &quot;12&quot;</span>
+<span class="hljs-comment">// &quot;12&quot; + 3 = &quot;123&quot;</span>
+</code></pre>
+    <hr />
+    <hr />
+    <ul>
+      <li>
+        In JS we can compare two different datatype values which is completely
+        wrong ❌👎 that why typescript came in to the picture
+      </li>
+      <li>here why it is wrong</li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-literal">null</span> &lt; <span class="hljs-number">0</span>); <span class="hljs-comment">// false 0 &lt; 0</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-literal">null</span> &gt; <span class="hljs-number">0</span>); <span class="hljs-comment">// false</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-literal">null</span> == <span class="hljs-number">0</span>); <span class="hljs-comment">// false</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-literal">null</span> &gt;= <span class="hljs-number">0</span>); <span class="hljs-comment">// true</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-literal">null</span> &lt;= <span class="hljs-number">0</span>); <span class="hljs-comment">// true</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-literal">undefined</span> &lt; <span class="hljs-number">0</span>); <span class="hljs-comment">// false even with &lt; , &gt; , &lt;= , &gt;=</span>
+</code></pre>
+    <ul>
+      <li>
+        JavaScript have special operator call that compare value and even
+        compare datatype of that value
+      </li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">1</span> === <span class="hljs-number">1</span>); <span class="hljs-comment">// true</span>
+<span class="hljs-comment">// both are number</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">1</span> === <span class="hljs-string">&quot;1&quot;</span>); <span class="hljs-comment">// false</span>
+<span class="hljs-comment">// string and number</span>
+</code></pre>
+    <hr />
+    <h2 id="strings">Strings</h2>
+    <hr />
+    <ul>
+      <li>
+        <p>Sequences of character</p>
+      </li>
+      <li>
+        <p>String can be represent as character of an array</p>
+      </li>
+      <li>
+        <p><code>&quot;hi&quot;.__proto__</code> in <code>console</code></p>
+      </li>
+      <li>
+        <p>as string literals</p>
+      </li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-keyword">let</span> str1 = <span class="hljs-string">&quot;Hello JS&quot;</span>;
+<span class="hljs-keyword">let</span> str2 = <span class="hljs-string">&quot;Hello Js 2&quot;</span>;
+<span class="hljs-keyword">let</span> str3 = <span class="hljs-string">`Hello Js 3`</span>; <span class="hljs-comment">// string literal</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-keyword">typeof</span> str1, <span class="hljs-keyword">typeof</span> str2, <span class="hljs-keyword">typeof</span> str3); <span class="hljs-comment">// string string string</span>
+</code></pre>
+    <ul>
+      <li>as Object <em>rarely</em> used</li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-keyword">let</span> strObj = <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(<span class="hljs-string">&quot;Hello String from String Object&quot;</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-keyword">typeof</span> strObj); <span class="hljs-comment">// object</span>
+</code></pre>
+    <ul>
+      <li>we can access the string character using their index</li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;Hello World&quot;</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str[<span class="hljs-number">0</span>]); <span class="hljs-comment">// H</span>
+</code></pre>
+    <p><code>String.prototype</code></p>
+    <ul>
+      <li>
+        <code>length</code>
+        <ul>
+          <li>Return the string length , count the character in string</li>
+        </ul>
+        <pre><code class="language-js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;Hello&quot;</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str.<span class="hljs-property">length</span>); <span class="hljs-comment">// 4</span>
+</code></pre>
+      </li>
+    </ul>
+    <hr />
+    <ul>
+      <li>
+        <code>charAt(index)</code>
+        <ul>
+          <li>Return the character at specific index</li>
+        </ul>
+        <pre><code class="language-js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;Hello&quot;</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str.<span class="hljs-title function_">charAt</span>(<span class="hljs-number">1</span>)); <span class="hljs-comment">// &#x27;e&#x27;</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str.<span class="hljs-title function_">charAt</span>()); <span class="hljs-comment">// &#x27;H&#x27;</span>
+</code></pre>
+        <ul>
+          <li>
+            If index is <code>out of range</code> and if we give negative value
+            than it return <code>' '</code> (empty string).
+          </li>
+          <li>It did not allow negative index return <code>' '</code></li>
+          <li>
+            If we want to use negative values as index than we can use
+            <code>at(index)</code>
+          </li>
+          <li>negative values than it given index from last of the string</li>
+          <li><code>-1</code> -&gt; last character</li>
+          <li><code>-2</code> -&gt; second last character ..... so on</li>
+        </ul>
+      </li>
+    </ul>
+    <hr />
+    <ul>
+      <li>
+        <code>charCodeAt(index)</code>
+        <ul>
+          <li>
+            If we want the a <code>UTF-16</code> value from the index than we
+            can use <code>charCodeAt(index)</code>
+          </li>
+        </ul>
+        <pre><code class="language-js"><span class="hljs-keyword">let</span> a = <span class="hljs-string">&quot;Hello World&quot;</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a.<span class="hljs-title function_">charCodeAt</span>()); <span class="hljs-comment">// zero index 47</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a.<span class="hljs-title function_">charCodeAt</span>(<span class="hljs-number">2</span>)); <span class="hljs-comment">// zero index 108</span>
+</code></pre>
+      </li>
+    </ul>
+    <hr />
+    <ul>
+      <li>
+        <p><code>concat(s1,s2,s3,sN)</code></p>
+        <ul>
+          <li>
+            Combines the multiple string into one string , without modifying
+            original string
+          </li>
+        </ul>
+        <pre><code class="language-js"><span class="hljs-keyword">let</span> str1 = <span class="hljs-string">&quot;Hello&quot;</span>;
+<span class="hljs-keyword">let</span> str2 = <span class="hljs-string">&quot;World&quot;</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str1.<span class="hljs-title function_">concat</span>(<span class="hljs-string">&quot; &quot;</span>, str2)); <span class="hljs-comment">// &quot;Hello World&quot;</span>
+</code></pre>
+      </li>
+      <li>
+        <p><code>includes(substr,position)</code></p>
+        <ul>
+          <li>
+            It return <code>true</code> or <code>false</code> whether the given
+            substring found in string
+          </li>
+          <li>
+            we can optional give index position to start searching by default is
+            <code>0</code>
+          </li>
+        </ul>
+        <pre><code class="language-js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;Hello World&quot;</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str.<span class="hljs-title function_">includes</span>(<span class="hljs-string">&quot;World&quot;</span>)); <span class="hljs-comment">// true</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str.<span class="hljs-title function_">includes</span>(<span class="hljs-string">&quot;e&quot;</span>)); <span class="hljs-comment">// true</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str.<span class="hljs-title function_">includes</span>(<span class="hljs-string">&quot;k&quot;</span>)); <span class="hljs-comment">// false</span>
+</code></pre>
+      </li>
+      <li>
+        <p><code>indexOf(searchString,fromIndex)</code></p>
+        <ul>
+          <li>
+            It return index of first occurrence of the give search sub-string
+          </li>
+          <li>
+            If given search string not found than it return <code>-1</code>
+          </li>
+        </ul>
+        <pre><code class="language-js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;Hello World&quot;</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&quot;World&quot;</span>)); <span class="hljs-comment">// 6</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&quot;k&quot;</span>)); <span class="hljs-comment">// -1</span>
+</code></pre>
+        <ul>
+          <li>
+            If we have need from last than we can use <code>lastIndexOf()</code>
+          </li>
+        </ul>
+        <pre><code class="language-js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;Hello World&quot;</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str.<span class="hljs-title function_">lastIndexOf</span>(<span class="hljs-string">&quot;l&quot;</span>)); <span class="hljs-comment">// 9</span>
+</code></pre>
+      </li>
+      <li>
+        <p><code>slice(beginIndex, endIndex)</code></p>
+        <ul>
+          <li>
+            It return a section of the string as per given index ,
+            <code>endIndex</code> will not included
+          </li>
+          <li>It do not modify the original string .</li>
+          <li><code>endIndex</code> is optional parameter</li>
+        </ul>
+        <pre><code class="language-js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;Hello World&quot;</span>;
+<span class="hljs-keyword">let</span> newStr = str.<span class="hljs-title function_">slice</span>(<span class="hljs-number">2</span>, <span class="hljs-number">5</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(newStr); <span class="hljs-comment">// &quot;llo&quot;</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str.<span class="hljs-title function_">slice</span>(<span class="hljs-number">6</span>)); <span class="hljs-comment">// &quot;World&quot;</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str.<span class="hljs-title function_">slice</span>(-<span class="hljs-number">1</span>)); <span class="hljs-comment">// &quot;d&quot;</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str); <span class="hljs-comment">// &quot;Hello World&quot;</span>
+</code></pre>
+      </li>
+      <li>
+        <p><code>substring(indexStart, indexEnd)</code></p>
+        <ul>
+          <li>
+            Similar to <code>slice(beginIndex, endIndex)</code> , but include
+            the <code>indexEnd</code>
+          </li>
+          <li>It do not modify the original string</li>
+          <li>It do not allow the negative index</li>
+        </ul>
+        <pre><code class="language-js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;Hello World&quot;</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str.<span class="hljs-title function_">substring</span>(<span class="hljs-number">0</span>, <span class="hljs-number">5</span>)); <span class="hljs-comment">// &quot;Hello&quot;</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str); <span class="hljs-comment">// &quot;Hello World&quot;</span>
+</code></pre>
+      </li>
+      <li>
+        <p><code>substr(index,length)</code></p>
+        <ul>
+          <li>
+            It start extracting string from given index till the second
+            parameter length otherwise it extract string till end.
+          </li>
+        </ul>
+        <pre><code class="language-js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;Hello, world!&quot;</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str.<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>, <span class="hljs-number">5</span>)); <span class="hljs-comment">// &quot;Hello&quot;</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str.<span class="hljs-title function_">slice</span>(-<span class="hljs-number">6</span>, -<span class="hljs-number">1</span>)); <span class="hljs-comment">// &quot;world&quot;</span>
+<span class="hljs-keyword">let</span> str1 = <span class="hljs-string">&quot;Hello World&quot;</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str1.<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>, <span class="hljs-number">100</span>)); <span class="hljs-comment">// Hello World&quot;</span>
+</code></pre>
+      </li>
+      <li>
+        <p><code>Case Change</code></p>
+        <ul>
+          <li>
+            <code>UpperCase</code> to <code>LowerCase</code> :-
+            <code>'Hello Js'.toUpperCase()</code> - <em>output</em>-&gt;
+            <code>'HELLO JS'</code>
+          </li>
+          <li>
+            <code>LowerCase</code> to <code>UpperCase</code> :-
+            <code>'Hello Js'.toLowerCase()</code> - <em>output</em>-&gt;
+            <code>'hello js'</code>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p><code>trim()</code></p>
+        <ul>
+          <li>
+            Remove White Space from end and start of the sting and return the
+            string
+          </li>
+        </ul>
+        <pre><code class="language-js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;  Hello World  &quot;</span>;
+<span class="hljs-keyword">let</span> a = str.<span class="hljs-title function_">trim</span>();
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a); <span class="hljs-comment">// &quot;Hello World&quot;</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str); <span class="hljs-comment">//&quot;  Hello World  &quot;</span>
+</code></pre>
+        <ul>
+          <li>
+            We have more two option for removing white space from start
+            <code>trimStart()</code> and removing space from end of the string
+            <code>trimEnd()</code>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p><code>split(delimiter,limit)</code></p>
+        <ul>
+          <li>
+            Split (broke) the string as per delimiter into substring of array we
+            can optional specify the maxLimit of split
+          </li>
+        </ul>
+        <pre><code class="language-js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;Hello World&quot;</span>;
+<span class="hljs-keyword">let</span> a = str.<span class="hljs-title function_">split</span>(<span class="hljs-string">&quot; &quot;</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a); <span class="hljs-comment">// [&quot;Hello&quot;, &quot;World&quot;]</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str); <span class="hljs-comment">// &quot;Hello World&quot;;</span>
+</code></pre>
+        <ul>
+          <li>
+            If delimiter is not found than return original string as array
+          </li>
+        </ul>
+        <pre><code class="language-js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;Hello World&quot;</span>;
+<span class="hljs-keyword">let</span> a = str.<span class="hljs-title function_">split</span>(<span class="hljs-string">&quot;x&quot;</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a); <span class="hljs-comment">// [&#x27;Hello World&#x27;]</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str); <span class="hljs-comment">// &quot;Hello World&quot;;</span>
+</code></pre>
+      </li>
+      <li>
+        <p><code>replace(searchValue, newValue)</code></p>
+        <ul>
+          <li>
+            replace the <em>first</em> occurrences <code>searchValue</code> with
+            <code>newValue</code>
+          </li>
+          <li>it do not modify the original string</li>
+        </ul>
+        <pre><code class="language-js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;Hello World&quot;</span>;
+<span class="hljs-keyword">let</span> a = str.<span class="hljs-title function_">replace</span>(<span class="hljs-string">&quot;World&quot;</span>, <span class="hljs-string">&quot;Everyone&quot;</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a); <span class="hljs-comment">// &quot;Hello Everyone&quot;</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str); <span class="hljs-comment">//&quot;Hello World&quot;</span>
+</code></pre>
+        <ul>
+          <li>
+            if <code>searchValue</code> not found than it return original string
+          </li>
+          <li>
+            if we want to replace the all occurrence of the substring than we
+            can use <code>replaceAll()</code>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <code>startsWith(str,position)</code> and
+          <code>endsWith(str,position)</code>
+        </p>
+        <ul>
+          <li>
+            It check the given sting is string or ending with specific sub-str
+            or not
+          </li>
+          <li>return Boolean values</li>
+        </ul>
+        <pre><code class="language-js"><span class="hljs-keyword">let</span> s = <span class="hljs-string">&quot;Hello World&quot;</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(s.<span class="hljs-title function_">startsWith</span>(<span class="hljs-string">&quot;H&quot;</span>)); <span class="hljs-comment">// true</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(s.<span class="hljs-title function_">endsWith</span>(<span class="hljs-string">&quot;D&quot;</span>)); <span class="hljs-comment">// false;</span>
+</code></pre>
+      </li>
+      <li>
+        <p>
+          string Operator :- <code>string1</code> + <code>string2</code> e.g.:-
+          <code>Hello </code> + <code>World</code> = <code>Hello World</code>
+        </p>
+      </li>
+      <li>
+        <p>
+          This is just a some overview of string <code>methods</code> and
+          <code>properties</code>, for more info you can search on web , or
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+            >visit MDN</a
+          >
+        </p>
+      </li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-keyword">let</span> name = <span class="hljs-string">&quot;Utsav&quot;</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Hello From &quot;</span> + name); <span class="hljs-comment">// old way to concatenations</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Hello From <span class="hljs-subst">${name}</span>`</span>); <span class="hljs-comment">// new way</span>
+<span class="hljs-comment">// string literal</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(name[<span class="hljs-number">0</span>]); <span class="hljs-comment">// only U will print</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(name.<span class="hljs-property">length</span>); <span class="hljs-comment">// 5 print the length of a string</span>
+
+<span class="hljs-keyword">let</span> chai = <span class="hljs-string">&quot;green&quot;</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(chai.<span class="hljs-property">__proto__</span>); <span class="hljs-comment">// GOD</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(chai.<span class="hljs-title function_">toUpperCase</span>()); <span class="hljs-comment">// &quot;GREEN&quot;</span>
+<span class="hljs-comment">// convert into upper case</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(chai.<span class="hljs-title function_">toLowerCase</span>()); <span class="hljs-comment">// &quot;green&quot;</span>
+<span class="hljs-comment">// convert into upper case</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(chai.<span class="hljs-title function_">charAt</span>(<span class="hljs-number">1</span>)); <span class="hljs-comment">// r</span>
+<span class="hljs-comment">// it print character at any index</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(chai.<span class="hljs-title function_">charAt</span>(chai.<span class="hljs-property">length</span> + <span class="hljs-number">1</span>)); <span class="hljs-comment">// if index is greater than string then &quot; &quot; will return</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(chai.<span class="hljs-title function_">charCodeAt</span>(<span class="hljs-number">2</span>)); <span class="hljs-comment">// we get ascii value of any index</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(chai.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&quot;n&quot;</span>)); <span class="hljs-comment">// give index of sub string</span>
+
+<span class="hljs-comment">// G R E E N</span>
+<span class="hljs-comment">// 0 1 2 3 4</span>
+
+<span class="hljs-keyword">const</span> subChai = chai.<span class="hljs-title function_">substring</span>(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>); <span class="hljs-comment">// ge start from g and end at e</span>
+<span class="hljs-keyword">const</span> newSubChai = chai.<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>); <span class="hljs-comment">// same as above</span>
+<span class="hljs-keyword">const</span> negSubChai = chai.<span class="hljs-title function_">slice</span>(-<span class="hljs-number">4</span>, <span class="hljs-number">3</span>); <span class="hljs-comment">//</span>
+<span class="hljs-comment">// G R E E N</span>
+<span class="hljs-comment">// 0 1 2 3 4</span>
+
+<span class="hljs-comment">// -4 -&gt; start from end of the string &#x27;r&#x27;</span>
+<span class="hljs-comment">// 3 -&gt; start from the beginning of the sting only &#x27;e&#x27; due it last index will exclude</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(negSubChai);
+
+<span class="hljs-keyword">let</span> stringArr = chai.<span class="hljs-title function_">split</span>(<span class="hljs-string">&quot;&quot;</span>); <span class="hljs-comment">// string convert into array as per splitter</span>
+<span class="hljs-comment">// we can optional give maxSplit (limit)</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(stringArr);
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(chai.<span class="hljs-title function_">search</span>(<span class="hljs-string">&quot;g&quot;</span>)); <span class="hljs-comment">// this method search character in string and return index</span>
+<span class="hljs-comment">// if character not found than it return -1</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(chai.<span class="hljs-title function_">startsWith</span>(<span class="hljs-string">&quot;l&quot;</span>)); <span class="hljs-comment">// this method check string start with sub string or not it return boolean value</span>
+<span class="hljs-comment">// same we have endsWith</span>
+
+<span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;        utsav        &quot;</span>;
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str.<span class="hljs-title function_">trim</span>()); <span class="hljs-comment">// remove white space from start and end from the string</span>
+<span class="hljs-comment">// same we can remove space from the only start and end</span>
+
+<span class="hljs-keyword">let</span> strX = <span class="hljs-string">&quot;Hello World !!!&quot;</span>;
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(strX.<span class="hljs-title function_">replace</span>(<span class="hljs-string">&quot;o&quot;</span>, <span class="hljs-string">&quot;)&quot;</span>)); <span class="hljs-comment">// replace only first occurrences</span>
+
+<span class="hljs-comment">// for all replacement replaceAll() method</span>
+
+<span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;my name is utsav&quot;</span>;
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str.<span class="hljs-title function_">includes</span>(<span class="hljs-string">&quot;mark&quot;</span>)); <span class="hljs-comment">// this method check that string contains substring or not</span>
+</code></pre>
+    <h2 id="number-and-math-object">Number and Math Object</h2>
+    <ul>
+      <li>
+        In JS <code>123</code> and <code>3.14</code> treat as number not a
+        separate datatype like <code>c</code>, <code>c++</code> or any other
+        language
+      </li>
+      <li>Number in JS are very straight forward. it has very few methods</li>
+      <li>
+        <code>JS</code> also have <code>BigInt</code> datatype for extremely
+        large number , but it doesn't replace normal numbers , we normally just
+        use normal number rarely used <code>BigInt</code>
+      </li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-keyword">let</span> n = <span class="hljs-number">100</span>;
+<span class="hljs-keyword">let</span> n1 = <span class="hljs-title class_">Number</span>(<span class="hljs-number">100</span>);
+<span class="hljs-keyword">let</span> n2 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Number</span>(<span class="hljs-number">100</span>); <span class="hljs-comment">// as object</span>
+</code></pre>
+    <hr />
+    <ul>
+      <li>
+        <code>toFixed(digit)</code>
+        <ul>
+          <li>format the number using fixed Point notions</li>
+          <li>return type will <code>String</code></li>
+          <li>digit should be between <code>0</code> to <code>100</code></li>
+        </ul>
+        <pre><code class="language-js"><span class="hljs-keyword">let</span> num = <span class="hljs-number">123.456</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(num.<span class="hljs-title function_">toFixed</span>(<span class="hljs-number">2</span>)); <span class="hljs-comment">// &quot;123.46&quot;</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(num.<span class="hljs-title function_">toFixed</span>(<span class="hljs-string">&quot;2&quot;</span>)); <span class="hljs-comment">// &quot;123.46&quot;</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(num.<span class="hljs-title function_">toFixed</span>(<span class="hljs-string">&quot;HI&quot;</span>)); <span class="hljs-comment">// &quot;123&quot;</span>
+</code></pre>
+      </li>
+      <li><code>toString(radix)</code></li>
+      <li>
+        Convert(return) number into string as per <code>radix</code> by default
+        value is <code>10</code>
+      </li>
+      <li>
+        <code>radix</code> must be between <code>2</code> to
+        <code>36</code> other wise throw <code>RangeError</code>
+      </li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-number">10.</span><span class="hljs-title function_">toString</span>(<span class="hljs-number">2</span>) -&gt; <span class="hljs-number">1010</span>
+<span class="hljs-number">10.</span><span class="hljs-title function_">toString</span>(<span class="hljs-number">3</span>) -&gt; <span class="hljs-number">101</span>
+<span class="hljs-number">10.</span><span class="hljs-title function_">toString</span>(<span class="hljs-number">4</span>) -&gt; <span class="hljs-number">22</span>
+<span class="hljs-number">10.</span><span class="hljs-title function_">toString</span>(<span class="hljs-number">5</span>) -&gt; <span class="hljs-number">20</span>
+<span class="hljs-number">10.</span><span class="hljs-title function_">toString</span>(<span class="hljs-number">6</span>) -&gt; <span class="hljs-number">14</span>
+<span class="hljs-number">10.</span><span class="hljs-title function_">toString</span>(<span class="hljs-number">7</span>) -&gt; <span class="hljs-number">13</span>
+<span class="hljs-number">10.</span><span class="hljs-title function_">toString</span>(<span class="hljs-number">8</span>) -&gt; <span class="hljs-number">12</span>
+<span class="hljs-number">10.</span><span class="hljs-title function_">toString</span>(<span class="hljs-number">9</span>) -&gt; <span class="hljs-number">11</span>
+<span class="hljs-number">10.</span><span class="hljs-title function_">toString</span>(<span class="hljs-number">10</span>) -&gt; <span class="hljs-number">10</span>
+<span class="hljs-number">10.</span><span class="hljs-title function_">toString</span>(<span class="hljs-number">11</span>) -&gt; a
+<span class="hljs-comment">// till 36 return value is a</span>
+</code></pre>
+    <ul>
+      <li>
+        <p>
+          <code>Number.parseInt(value)</code> and <code>parseInt(value)</code> ,
+          <code>Number.parseFloat(value)</code> and
+          <code>parseFloat(value)</code>
+        </p>
+        <ul>
+          <li>
+            both are same <code>parseInt == Number.parseInt</code> - &gt;
+            <code>true</code>
+          </li>
+          <li>
+            both are same <code>parseFloat == Number.parseFloat</code> - &gt;
+            <code>true</code>
+          </li>
+          <li>
+            <code>parseInt(value)</code> and <code>parseFloat(value)</code> are
+            available at Global
+          </li>
+        </ul>
+        <pre><code class="language-js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-built_in">parseInt</span>(<span class="hljs-number">100.2</span>)); <span class="hljs-comment">// 100</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Number</span>.<span class="hljs-built_in">parseInt</span>(<span class="hljs-number">100.2</span>)); <span class="hljs-comment">// 100</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Number</span>.<span class="hljs-built_in">parseFloat</span>(<span class="hljs-string">&quot;121.12&quot;</span>)); <span class="hljs-comment">// 121.12</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-built_in">parseFloat</span>(<span class="hljs-string">&quot;121.12&quot;</span>)); <span class="hljs-comment">// 121.12</span>
+</code></pre>
+      </li>
+      <li>
+        <p><code>isNaN(value)</code> , <code>isFinite(value)</code></p>
+        <ul>
+          <li>
+            <code>isNaN(value)</code> return <code>true</code> if given value is
+            <code>Not a Number</code> other wise <code>false</code>
+          </li>
+          <li>
+            <code>isFinite(value)</code> return <code>true</code> if given value
+            (number) is <code>finite</code> other wise <code>false</code>
+            <ul>
+              <li>
+                In the case of string it return false because it can't process
+                string and it is infinite value
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-keyword">let</span> num = <span class="hljs-number">123</span>; <span class="hljs-comment">// normal variable declarations</span>
+
+<span class="hljs-keyword">let</span> numWithNumber = <span class="hljs-title class_">Number</span>(<span class="hljs-number">123</span>); <span class="hljs-comment">// using  number keyword</span>
+
+<span class="hljs-keyword">let</span> numWithNewKeyword = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Number</span>(<span class="hljs-number">123</span>); <span class="hljs-comment">// we create a number with number object with the help of new</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">table</span>([num, numWithNumber, numWithNewKeyword]); <span class="hljs-comment">// all are same</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(num.<span class="hljs-title function_">toString</span>()); <span class="hljs-comment">// now &#x27;123&#x27; convert into string so string method are can be apply</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(num.<span class="hljs-title function_">toFixed</span>(<span class="hljs-number">2</span>)); <span class="hljs-comment">// 123.00</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(num.<span class="hljs-title function_">toFixed</span>(<span class="hljs-number">3</span>)); <span class="hljs-comment">// 123.000</span>
+
+<span class="hljs-keyword">let</span> newNum = <span class="hljs-number">3.14</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(newNum.<span class="hljs-title function_">toPrecision</span>(<span class="hljs-number">1</span>)); <span class="hljs-comment">// 3</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(newNum.<span class="hljs-title function_">toPrecision</span>(<span class="hljs-number">2</span>)); <span class="hljs-comment">// 3.1</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(newNum.<span class="hljs-title function_">toPrecision</span>(<span class="hljs-number">3</span>)); <span class="hljs-comment">// 3.14</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(newNum.<span class="hljs-title function_">toPrecision</span>(<span class="hljs-number">4</span>)); <span class="hljs-comment">// 3.140</span>
+
+<span class="hljs-keyword">let</span> ranchosFatherSalary = <span class="hljs-number">25000000</span>; <span class="hljs-comment">// from 3 idiots 😂</span>
+<span class="hljs-comment">// we are unable to read it</span>
+<span class="hljs-comment">// js : don&#x27;t worry</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(ranchosFatherSalary.<span class="hljs-title function_">toLocaleString</span>(<span class="hljs-string">&quot;en-in&quot;</span>)); <span class="hljs-comment">// 2,50,00,000</span>
+<span class="hljs-comment">// salary convert into as per indian standard</span>
+
+<span class="hljs-comment">// that why BigInt come</span>
+</code></pre>
+    <hr />
+    <pre><code class="language-js"><span class="hljs-keyword">let</span> max_num = <span class="hljs-title class_">Number</span>.<span class="hljs-property">MAX_SAFE_INTEGER</span>;
+<span class="hljs-keyword">let</span> min_num = <span class="hljs-title class_">Number</span>.<span class="hljs-property">MIN_SAFE_INTEGER</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(max_num, min_num); <span class="hljs-comment">// 9007199254740991 , -9007199254740991</span>
+</code></pre>
+    <ul>
+      <li>
+        <p>
+          JS can perform any operations on number between this numbers than it
+          may create issue
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number"
+            >learn more about number</a
+          >
+        </p>
+      </li>
+      <li>
+        <p>Math Object</p>
+      </li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">abs</span>(-<span class="hljs-number">4</span>)); <span class="hljs-comment">// 4</span>
+<span class="hljs-comment">// only negative to positive</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">round</span>(<span class="hljs-number">4.5</span>)); <span class="hljs-comment">// 5</span>
+<span class="hljs-comment">// as per normal standard</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">ceil</span>(<span class="hljs-number">4.5</span>)); <span class="hljs-comment">// 5</span>
+<span class="hljs-comment">// value up</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>(<span class="hljs-number">4.5</span>)); <span class="hljs-comment">// 4</span>
+<span class="hljs-comment">// value maintain 4</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">pow</span>(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>) === <span class="hljs-number">2</span> ** <span class="hljs-number">3</span>); <span class="hljs-comment">// true</span>
+<span class="hljs-comment">// 9 === 9</span>
+<span class="hljs-comment">// true that means both are same</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">0</span>)); <span class="hljs-comment">// give minimum number</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">0</span>)); <span class="hljs-comment">// give maximum number</span>
+
+<span class="hljs-comment">// most important method</span>
+
+<span class="hljs-comment">// Math.random() it give random number between 0 and 1</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * <span class="hljs-number">10</span>); <span class="hljs-comment">// now value b/w 0 to 10</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * <span class="hljs-number">10</span> + <span class="hljs-number">1</span>); <span class="hljs-comment">// now value b/w 1 to 10</span>
+
+<span class="hljs-keyword">let</span> min = <span class="hljs-number">10</span>;
+
+<span class="hljs-keyword">let</span> max = <span class="hljs-number">100</span>;
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * (max - min + <span class="hljs-number">1</span>) + min));
+<span class="hljs-comment">// now value always be 10 to 100</span>
+</code></pre>
+    <p>
+      <a
+        href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math"
+        >learn more about math object</a
+      >
+    </p>
+    <h2 id="array">Array</h2>
+    <ul>
+      <li>
+        In JS array can store <code>any datatype</code> including
+        <code>function</code> , <code>array</code> , <code>object</code> etc.
+      </li>
+      <li>
+        JS array are resizable it can grow dynamically we do not define the size
+        of the array
+      </li>
+      <li>
+        Array are zero based indexing , call by references modify direct
+        original
+      </li>
+      <li><strong>array type is object not an array</strong></li>
+      <li>array is in JavaScript are special type object</li>
+      <li><a href="./07-interview.html#why-array-type-is-object">why</a></li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-keyword">let</span> arr = [
+  <span class="hljs-number">1</span>,
+  <span class="hljs-number">2</span>,
+  <span class="hljs-number">3.14</span>,
+  <span class="hljs-string">&quot;Hello&quot;</span>,
+  [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, [<span class="hljs-number">100</span>, <span class="hljs-number">101</span>]],
+  <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;LOL&quot;</span>);
+  },
+]; <span class="hljs-comment">// type object</span>
+</code></pre>
+    <hr />
+    <pre><code class="language-js"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3.14</span>, <span class="hljs-literal">true</span>]; <span class="hljs-comment">// number , boolean array</span>
+<span class="hljs-keyword">let</span> hero = [<span class="hljs-string">&quot;iron man&quot;</span>, <span class="hljs-string">&quot;spider man&quot;</span>, <span class="hljs-string">&quot;super man&quot;</span>]; <span class="hljs-comment">// strings array</span>
+<span class="hljs-keyword">const</span> arrWithArr = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Array</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>); <span class="hljs-comment">// array as object</span>
+</code></pre>
+    <ul>
+      <li>accessing array element</li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-keyword">let</span> hero = [<span class="hljs-string">&quot;iron man&quot;</span>, <span class="hljs-string">&quot;spider man&quot;</span>, <span class="hljs-string">&quot;super man&quot;</span>];
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(hero[<span class="hljs-number">0</span>]); <span class="hljs-comment">// iron man</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(hero[<span class="hljs-number">1</span>]); <span class="hljs-comment">// spider man</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(hero[<span class="hljs-number">2</span>]); <span class="hljs-comment">// super man</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(hero[<span class="hljs-number">3</span>]); <span class="hljs-comment">// undefined</span>
+</code></pre>
+    <ul>
+      <li>
+        <p><code>Array.length</code> - return the length of the array</p>
+      </li>
+      <li>
+        <p>
+          <code>hero[3]</code> return <code>undefined</code> because we are try
+          to access element out of array range that's why it
+          <code>undefined</code>
+        </p>
+      </li>
+      <li>
+        <p>Adding / removing from last</p>
+      </li>
+      <li>
+        <p>
+          <code>push(elements...)</code> method add element at end of the array
+        </p>
+      </li>
+      <li>
+        <p><code>pop()</code> remove and return last element from array</p>
+      </li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3.14</span>, <span class="hljs-literal">true</span>];
+arr.<span class="hljs-title function_">push</span>(<span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>); <span class="hljs-comment">// add element at last</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr); <span class="hljs-comment">// [1, 2, 3.14, true, 8, 9, 10 ]</span>
+<span class="hljs-keyword">let</span> removedEle = arr.<span class="hljs-title function_">pop</span>(); <span class="hljs-comment">// remove and return last element</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr); <span class="hljs-comment">// [ 1, 2, 3.14, true, 8, 9 ]</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Removed element from array <span class="hljs-subst">${removedEle}</span> .`</span>); <span class="hljs-comment">// Removed element from array 10 .</span>
+</code></pre>
+    <ul>
+      <li>Adding / removing from start</li>
+      <li><code>unshift(elements...)</code> - add element(s) at starting</li>
+      <li>
+        <code>shift</code> - remove and return first element from an array
+      </li>
+      <li>
+        both method are very time consuming task because of we are modifying
+        element at starting which means rest of the element require re-indexing
+      </li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3.14</span>, <span class="hljs-literal">true</span>];
+arr.<span class="hljs-title function_">unshift</span>(<span class="hljs-string">&quot;x&quot;</span>, <span class="hljs-string">&quot;y&quot;</span>); <span class="hljs-comment">// add element at first and change all existing element index</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr); <span class="hljs-comment">// [ &#x27;x&#x27;, &#x27;y&#x27;,  1, 2,   3.14, true, 8, 9]</span>
+<span class="hljs-keyword">let</span> removedFirstEle = arr.<span class="hljs-title function_">shift</span>(); <span class="hljs-comment">// remove and return first element</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr); <span class="hljs-comment">// [&quot;y&quot;, 1, 2, 3.14, true, 8, 9];</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(removedFirstEle); <span class="hljs-comment">// x</span>
+</code></pre>
+    <ul>
+      <li>
+        <code>Array.include(element)</code> - method check given parameter is
+        available in array or not it return <code>Boolean</code> value .
+      </li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>];
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr.<span class="hljs-title function_">includes</span>(<span class="hljs-number">2</span>)); <span class="hljs-comment">// true</span>
+</code></pre>
+    <ul>
+      <li>
+        <code>indexOf(element)</code> method return index of given parameter
+        from the array , if not found than it return <code>-1</code>
+      </li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>];
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr.<span class="hljs-title function_">indexOf</span>(<span class="hljs-number">0</span>)); <span class="hljs-comment">// -1</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr.<span class="hljs-title function_">indexOf</span>(<span class="hljs-number">1</span>)); <span class="hljs-comment">// 0</span>
+</code></pre>
+    <ul>
+      <li>
+        <code>join(separator)</code> - method join the all array element and
+        return the joined string
+      </li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>];
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr.<span class="hljs-title function_">join</span>()); <span class="hljs-comment">// &#x27;1,2,3,4,5,6,7,8,9&#x27;</span>
+</code></pre>
+    <pre><code class="language-js"><span class="hljs-comment">// slice and splice</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr.<span class="hljs-title function_">slice</span>(<span class="hljs-number">1</span>, <span class="hljs-number">4</span>)); <span class="hljs-comment">// return a copy for start and end section</span>
+<span class="hljs-comment">// do not modify array</span>
+
+<span class="hljs-keyword">let</span> partOfArr = arr.<span class="hljs-title function_">splice</span>(<span class="hljs-number">1</span>, <span class="hljs-number">4</span>); <span class="hljs-comment">// last index include</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr); <span class="hljs-comment">// hmm affect original array [main different b/w slice and splice]</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(partOfArr);
+
+<span class="hljs-keyword">const</span> marvel_heros = [<span class="hljs-string">&quot;thor&quot;</span>, <span class="hljs-string">&quot;IronMan&quot;</span>, <span class="hljs-string">&quot;SpiderMan&quot;</span>];
+<span class="hljs-keyword">const</span> dc_heros = [<span class="hljs-string">&quot;superman&quot;</span>, <span class="hljs-string">&quot;flash&quot;</span>, <span class="hljs-string">&quot;batman&quot;</span>];
+
+marvel_heros.<span class="hljs-title function_">push</span>(dc_heros); <span class="hljs-comment">// go wrong array inside array</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(marvel_heros);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(marvel_heros[<span class="hljs-number">3</span>][<span class="hljs-number">1</span>]); <span class="hljs-comment">// flash</span>
+
+<span class="hljs-keyword">let</span> numArr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+<span class="hljs-keyword">let</span> all_hero = marvel_heros.<span class="hljs-title function_">concat</span>(dc_heros, numArr); <span class="hljs-comment">// ok good</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(all_hero);
+<span class="hljs-comment">// new way  +++</span>
+
+<span class="hljs-keyword">let</span> hero_all = [...marvel_heros, ...dc_heros]; <span class="hljs-comment">// spread operator</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(hero_all);
+
+<span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, [<span class="hljs-number">4</span>, [<span class="hljs-number">5</span>, <span class="hljs-number">6</span>, [<span class="hljs-number">7</span>, [<span class="hljs-number">8</span>, <span class="hljs-number">9</span>]]]], <span class="hljs-number">0</span>];
+<span class="hljs-comment">// array inside array , at 4 level</span>
+
+<span class="hljs-comment">// console.log(arr);</span>
+<span class="hljs-comment">// convert into 1 array</span>
+
+<span class="hljs-comment">// let singleArr = arr.flat(5); // 5 nested level can convert into array</span>
+
+<span class="hljs-comment">// arr.flat(Infinity); at all level</span>
+<span class="hljs-comment">// console.log(singleArr);</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Array</span>.<span class="hljs-title function_">isArray</span>(<span class="hljs-string">&quot;Hello&quot;</span>)); <span class="hljs-comment">// return boolean value</span>
+<span class="hljs-comment">// check given parameter is array or not</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>(<span class="hljs-string">&quot;Hello&quot;</span>)); <span class="hljs-comment">// convert into array</span>
+
+<span class="hljs-comment">// console.log(Array.from({ name: &quot;Utsav&quot; })); // most interning case return []</span>
+
+<span class="hljs-comment">// console.log(Array.of({ name: &quot;Utsav&quot; }));</span>
+
+<span class="hljs-keyword">let</span> num1 = <span class="hljs-number">1</span>;
+<span class="hljs-keyword">let</span> num2 = <span class="hljs-number">2</span>;
+<span class="hljs-keyword">let</span> num3 = <span class="hljs-number">3</span>;
+
+<span class="hljs-keyword">let</span> newArray = <span class="hljs-title class_">Array</span>.<span class="hljs-title function_">of</span>(num1, num2, num3);
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(newArray);
+</code></pre>
+    <hr />
+    <h2 id="object">Object</h2>
+    <ul>
+      <li>any nested level of object possible</li>
+      <li>Two way to declare object in <code>JS</code></li>
+      <li>
+        <ol>
+          <li>
+            <code>Objcet Literal</code> - most simple way to declare object
+          </li>
+        </ol>
+      </li>
+      <li></li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-comment">// small example</span>
+<span class="hljs-keyword">let</span> car = {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;BMW&quot;</span>,
+  <span class="hljs-attr">model</span>: <span class="hljs-string">&quot;i3&quot;</span>,
+  <span class="hljs-attr">year</span>: <span class="hljs-number">2023</span>,
+};
+</code></pre>
+    <ul>
+      <li>
+        <ol start="2">
+          <li>
+            <code>Object constructor</code> - with the help of function
+            <code>learn in depth later</code>
+          </li>
+        </ol>
+        <ul>
+          <li>more complex example</li>
+        </ul>
+      </li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">Car</span>(<span class="hljs-params">name, model, year</span>) {
+  <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> = name;
+  <span class="hljs-variable language_">this</span>.<span class="hljs-property">model</span> = model;
+  <span class="hljs-variable language_">this</span>.<span class="hljs-property">year</span> = year;
+}
+
+<span class="hljs-keyword">let</span> bmwCar = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Car</span>(<span class="hljs-string">&quot;BMW&quot;</span>, <span class="hljs-string">&quot;X6&quot;</span>, <span class="hljs-number">2020</span>);
+</code></pre>
+    <hr />
+    <ul>
+      <li>
+        <code>singleton</code> - when we create object with
+        <code>objcet constructor</code> ,only one type of object
+      </li>
+    </ul>
+    <hr />
+    <pre><code class="language-js"><span class="hljs-keyword">let</span> car = {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;BMW&quot;</span>, <span class="hljs-comment">// in behinde name will treat as &#x27;name&#x27;</span>
+  <span class="hljs-attr">model</span>: <span class="hljs-string">&quot;i3&quot;</span>,
+  <span class="hljs-attr">year</span>: <span class="hljs-number">2023</span>,
+};
+
+<span class="hljs-comment">// way to access object</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(car.<span class="hljs-property">name</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(car[<span class="hljs-string">&quot;year&quot;</span>]);
+
+<span class="hljs-keyword">let</span> newObj = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>({
+  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;BMW&quot;</span>,
+  <span class="hljs-attr">model</span>: <span class="hljs-string">&quot;i3&quot;</span>,
+  <span class="hljs-attr">year</span>: <span class="hljs-number">2023</span>,
+});
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(newObj == car); <span class="hljs-comment">// both object store at differnt memory</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Object</span>.<span class="hljs-title function_">is</span>(car, newObj));
+
+user[<span class="hljs-string">&quot;email&quot;</span>] = <span class="hljs-string">&quot;utsav@gmail.com&quot;</span>; <span class="hljs-comment">// add at last</span>
+
+user[<span class="hljs-string">&quot;age&quot;</span>] = <span class="hljs-number">100</span>;
+user[<span class="hljs-string">&quot;haveFourLeg&quot;</span>] = <span class="hljs-literal">false</span>;
+
+user.<span class="hljs-property">greet</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`hello user`</span>);
+};
+
+user.<span class="hljs-property">advanceGreet</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Hello , <span class="hljs-subst">${<span class="hljs-variable language_">this</span>.name}</span>`</span>);
+};
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(user);
+user.<span class="hljs-title function_">greet</span>();
+user.<span class="hljs-title function_">advanceGreet</span>();
+
+<span class="hljs-comment">// Object.freeze(user); // freeze the object no edit or no update</span>
+</code></pre>
+    <ul>
+      <li>how to use Symbol as object key ?</li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-keyword">let</span> gender = <span class="hljs-title class_">Symbol</span>(<span class="hljs-string">&quot;male&quot;</span>);
+<span class="hljs-keyword">let</span> user = {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Utsav&quot;</span>,
+  <span class="hljs-attr">age</span>: <span class="hljs-number">17</span>,
+  <span class="hljs-attr">isStudent</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-comment">// gender: &quot;male&quot;, // not working</span>
+  [gender]: <span class="hljs-string">&quot;male&quot;</span>, <span class="hljs-comment">// its a synatx and symboled key property</span>
+};
+
+<span class="hljs-comment">// console.log(typeof user.gender); // string insted of symbol</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-keyword">typeof</span> user[gender]); <span class="hljs-comment">// string insted of symbol</span>
+</code></pre>
+    <hr />
+    <pre><code class="language-js"><span class="hljs-keyword">let</span> userOne = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>(); <span class="hljs-comment">// singletone object</span>
+<span class="hljs-keyword">let</span> user = {}; <span class="hljs-comment">// non object</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(user);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(userOne);
+
+user.<span class="hljs-property">id</span> = <span class="hljs-number">101</span>;
+user.<span class="hljs-property">name</span> = <span class="hljs-string">&quot;Sam&quot;</span>;
+user.<span class="hljs-property">isLoggedIn</span> = <span class="hljs-literal">false</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(user);
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Object</span>.<span class="hljs-title function_">keys</span>(user)); <span class="hljs-comment">// all key put in one array</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Object</span>.<span class="hljs-title function_">values</span>(user)); <span class="hljs-comment">// all value put in one array</span>
+
+<span class="hljs-keyword">let</span> userTwo = {
+  <span class="hljs-attr">id</span>: <span class="hljs-number">101</span>,
+  <span class="hljs-attr">fullName</span>: {
+    <span class="hljs-attr">userFullName</span>: {
+      <span class="hljs-attr">firstName</span>: <span class="hljs-string">&quot;Utsav&quot;</span>,
+      <span class="hljs-attr">lastName</span>: <span class="hljs-string">&quot;Dhimmar&quot;</span>,
+    },
+  },
+};
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(userTwo.<span class="hljs-property">fullName</span>?.<span class="hljs-property">userFullName</span>.<span class="hljs-property">firstName</span>);
+<span class="hljs-comment">// merger two object</span>
+<span class="hljs-keyword">let</span> objOne = {
+  <span class="hljs-number">1</span>: <span class="hljs-string">&quot;a&quot;</span>,
+  <span class="hljs-number">2</span>: <span class="hljs-string">&quot;b&quot;</span>,
+};
+
+<span class="hljs-keyword">let</span> objTwo = {
+  <span class="hljs-number">3</span>: <span class="hljs-string">&quot;c&quot;</span>,
+  <span class="hljs-number">4</span>: <span class="hljs-string">&quot;d&quot;</span>,
+};
+
+<span class="hljs-keyword">let</span> objThree = { objOne, objTwo }; <span class="hljs-comment">// it create problem</span>
+<span class="hljs-keyword">let</span> objThree = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">assign</span>({}, objOne, objTwo);
+<span class="hljs-comment">// here {} usefull when we have multiple object and it is optional</span>
+<span class="hljs-comment">// if we don&#x27;t write `{}` than all second source object copy into first object scource</span>
+<span class="hljs-keyword">let</span> objFour = { ...objOne, ...objTwo }; <span class="hljs-comment">// spread operator</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(objThree);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(objFour);
+</code></pre>
+    <ul>
+      <li>
+        when we receive data from database / API majorly time data received in
+        below format
+      </li>
+      <li>array that contains many object</li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-keyword">let</span> data = [
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-number">101</span>,
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Utsav&quot;</span>,
+  },
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-number">102</span>,
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Sam&quot;</span>,
+  },
+  {
+    <span class="hljs-attr">id</span>: <span class="hljs-number">103</span>,
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Mark&quot;</span>,
+  },
+];
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data[<span class="hljs-number">0</span>].<span class="hljs-property">id</span>);
+
+<span class="hljs-comment">// desctructiong object</span>
+
+<span class="hljs-keyword">let</span> { name } = user;
+<span class="hljs-keyword">let</span> { <span class="hljs-attr">name</span>: userNaem } = user; <span class="hljs-comment">// same as above just we give alternative name</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(name);
+</code></pre>
+    <h2 id="date">Date</h2>
+    <ul>
+      <li>Dates 🫣</li>
+      <li>
+        JavaScript <code>Date</code> objects represent a single moment in time
+        in a platform-independent format
+      </li>
+      <li>JS date start from mid night from 1 Jan 1970 UTC</li>
+      <li>date object calculate time in <code>millisecond</code></li>
+      <li>month index start with <code>0</code></li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-keyword">let</span> date = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>();
+<span class="hljs-comment">// YYYY-MM-DDTHH:mm:ss.sssZ</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-keyword">typeof</span> date); <span class="hljs-comment">// object</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(date);
+<span class="hljs-comment">// in node js - 2024-05-03T09:27:51.563Z // ISO string</span>
+<span class="hljs-comment">// Wed Aug 21 2024 20:16:10 GMT+0530 (India Standard Time)</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(date.<span class="hljs-title function_">toString</span>());
+<span class="hljs-comment">// Fri May 03 2024 14:59:35 GMT+0530 (India Standard Time)</span>
+<span class="hljs-comment">// now readable</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(date.<span class="hljs-title function_">toDateString</span>()); <span class="hljs-comment">// Wed Aug 21 2024</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(date.<span class="hljs-title function_">toISOString</span>()); <span class="hljs-comment">// 2024-08-21T14:46:10.355Z</span>
+<span class="hljs-comment">// a simplified format based on ISO 8601</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(date.<span class="hljs-title function_">toLocaleDateString</span>()); <span class="hljs-comment">// 8/21/2024</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(date.<span class="hljs-title function_">toLocaleTimeString</span>()); <span class="hljs-comment">// 8:16:10 PM</span>
+
+<span class="hljs-keyword">let</span> myDate = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-number">2024</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);
+<span class="hljs-comment">// this own date</span>
+<span class="hljs-comment">// here month start from 0 (means 0 0 =&gt; jan , 1=&gt; Feb ,....)</span>
+
+<span class="hljs-keyword">let</span> myDate = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-number">2024</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">22</span>, <span class="hljs-number">45</span>, <span class="hljs-number">90</span>);
+<span class="hljs-comment">// note here second is 90 which is wrong but in output 30 second added to the next minutes</span>
+<span class="hljs-keyword">let</span> indiaDate = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-string">&quot;2024-05-03&quot;</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(indiaDate); <span class="hljs-comment">// Fri May 03 2024 05:30:00 GMT+0530 (India Standard Time)</span>
+
+<span class="hljs-keyword">let</span> timeNow = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>(); <span class="hljs-comment">// 1724252059625</span>
+<span class="hljs-comment">// Date.now() -&gt; time in millisecond</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Date</span>(timeNow)); <span class="hljs-comment">// Wed Aug 21 2024 20:24:25 GMT+0530 (India Standard Time)</span>
+
+<span class="hljs-comment">// full customization</span>
+
+date.<span class="hljs-title function_">toLocaleString</span>(<span class="hljs-string">&quot;default&quot;</span>, {
+  <span class="hljs-attr">weekday</span>: <span class="hljs-string">&quot;long&quot;</span>,
+  <span class="hljs-attr">month</span>: <span class="hljs-string">&quot;short&quot;</span>,
+});
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(date);
+</code></pre>
+    <hr />
+    <pre><code class="language-js"><span class="hljs-keyword">let</span> date = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>();
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(date.<span class="hljs-title function_">getFullYear</span>());
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(date.<span class="hljs-title function_">getMonth</span>());
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(date.<span class="hljs-title function_">getDay</span>());
+</code></pre>
+    <ul>
+      <li>
+        we can retrieve date, year , full year, month, date , time ,hour ,second
+        etc , even in UTC
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date"
+          >for more info visit mdn</a
+        >
+      </li>
+    </ul>
+    <h2 id="functions">Functions</h2>
+    <ul>
+      <li>function are heart ❤️ of JS</li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">printSomething</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Hello World&quot;</span>);
+}
+
+<span class="hljs-title function_">printSometh</span>();
+
+<span class="hljs-comment">// simple program to add two numebr</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">num1, num2</span>) {
+  <span class="hljs-keyword">return</span> num1 + num2;
+}
+<span class="hljs-title function_">add</span>();
+
+<span class="hljs-comment">// another simple program to print two number</span>
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">addTwoNum</span>(<span class="hljs-params">num1 = <span class="hljs-number">1</span>, num2 = <span class="hljs-number">1</span></span>) {
+  <span class="hljs-comment">// default parameters</span>
+  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> num1 !== <span class="hljs-string">&quot;number&quot;</span> || <span class="hljs-keyword">typeof</span> num2 !== <span class="hljs-string">&quot;number&quot;</span>) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(
+      <span class="hljs-string">`Both input <span class="hljs-subst">${<span class="hljs-keyword">typeof</span> num1 !== <span class="hljs-string">&quot;number&quot;</span> ? num1 : num2}</span> must be number`</span>
+    );
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">return</span> num1 + num2; <span class="hljs-comment">// return to the caller</span>
+  }
+}
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">addTwoNum</span>(<span class="hljs-number">1</span>, <span class="hljs-number">12</span>));
+</code></pre>
+    <ul>
+      <li>rest operators</li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">...num1</span>) {
+  <span class="hljs-comment">// spread operator return array</span>
+  <span class="hljs-keyword">return</span> num1;
+}
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">add</span>(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>));
+</code></pre>
+    <h3 id="scopes">scopes</h3>
+    <ul>
+      <li>
+        the whole story of scope come from <code>let</code> ,
+        <code>var</code> and <code>const</code>.
+      </li>
+      <li>almost in every language we have scopes</li>
+      <li><code>var</code> is global scope</li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-keyword">if</span> (<span class="hljs-literal">true</span>) {
+  <span class="hljs-comment">// this is scope of if tue block</span>
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">one</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> name = <span class="hljs-string">&quot;Utsav&quot;</span>;
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">two</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> age = <span class="hljs-number">17</span>;
+
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(name);
+  } <span class="hljs-comment">// all the statement of function two destory here</span>
+  <span class="hljs-title function_">two</span>();
+  <span class="hljs-comment">// console.log(age); // throw error</span>
+}
+
+<span class="hljs-title function_">one</span>();
+</code></pre>
+    <pre><code class="language-js"><span class="hljs-title function_">doSomething</span>(); <span class="hljs-comment">// work properly</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">doSomething</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> <span class="hljs-string">`hello`</span>;
+}
+<span class="hljs-title function_">hola</span>(); <span class="hljs-comment">// not work because of hoisting</span>
+<span class="hljs-keyword">let</span> hola = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> <span class="hljs-string">`hello from hola function`</span>;
+};
+</code></pre>
+    <!-- - click here to read above thing -->
+    <ul>
+      <li>arrow function and teaser of <code>this</code> keyword</li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-keyword">const</span> <span class="hljs-title function_">arrow_fun</span> = (<span class="hljs-params"></span>) =&gt; {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Hello world&quot;</span>);
+};
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">add</span> = (<span class="hljs-params">num1, num2</span>) =&gt; num + num2; <span class="hljs-comment">// no need to return keyword</span>
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">lol</span> = (<span class="hljs-params"></span>) =&gt; ({ <span class="hljs-attr">username</span>: <span class="hljs-string">&quot;Utsav&quot;</span> });
+</code></pre>
+    <ul>
+      <li><code>this</code> keyword</li>
+    </ul>
+    <pre><code class="language-js"><span class="hljs-keyword">let</span> user = {
+  <span class="hljs-attr">username</span>: <span class="hljs-string">&quot;Utsav&quot;</span>,
+  <span class="hljs-attr">age</span>: <span class="hljs-number">17</span>,
+  <span class="hljs-attr">welcomeMsg</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Hello <span class="hljs-subst">${<span class="hljs-variable language_">this</span>.username}</span>`</span>);
+  },
+};
+
+user.<span class="hljs-title function_">welcomeMsg</span>();
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>);
+</code></pre>
+    <ul>
+      <li>in node this -&gt; <code>{ }</code></li>
+      <li>in browser this -&gt; <code>window object</code></li>
+      <li>its value depends on the context</li>
+    </ul>
+    <h3 id="iife-immediately-invoked-function-expression">
+      IIFE (Immediately Invoked Function Expression)
+    </h3>
+    <ul>
+      <li>example</li>
+    </ul>
+    <pre><code class="language-js">(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+  <span class="hljs-comment">// function body</span>
+})(); <span class="hljs-comment">// function call</span>
+<span class="hljs-comment">// anonyms iffe</span>
+</code></pre>
+    <ul>
+      <li>
+        <strong>IIFE</strong> use full when we want prevent variables , and any
+        other statement from global scope from polluting global scope
+      </li>
+      <li>
+        semicolon play important role for ending scope of <strong>IIFE</strong>
+      </li>
+    </ul>
+    <pre><code class="language-js">(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">let</span> x = <span class="hljs-number">12</span>;
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(x);
+})(); <span class="hljs-comment">// here semi colon paly important role</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(x); <span class="hljs-comment">// raised error</span>
+
+(<span class="hljs-keyword">function</span> <span class="hljs-title function_">hello</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-comment">// named IIFE</span>
+})();
+
+(<span class="hljs-function">(<span class="hljs-params">name = <span class="hljs-string">&quot;JS&quot;</span></span>) =&gt;</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(name);
+})(<span class="hljs-string">&quot;utsav&quot;</span>);
+</code></pre>
+    <hr />
+    <h2 id="notes">Notes</h2>
+    <ul>
+      <li>
+        <p>
+          <strong>Note</strong> - all the conditionals statement are same as
+          <code>c</code>, <code>c++</code> or <code>java</code> so learn
+          yourself !!!
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Note</strong> - all the iterative (<code>for</code>,
+          <code>while</code> , <code>do....while</code>) statement are same as
+          <code>c</code>, <code>c++</code> or <code>java</code> so learn
+          yourself !!! , some iterative statement are available in part 2 :)
+        </p>
+      </li>
+    </ul>
+
+    <script
+      async
+      src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"
+    ></script>
+  </body>
+</html>
