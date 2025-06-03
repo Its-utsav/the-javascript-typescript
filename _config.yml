@@ -1,3 +1,4 @@
 markdown: kramdown
-theme: minima
+# theme: minima
 source: web/JavaScript/
+remote_theme: "dracula/gh-pages"
