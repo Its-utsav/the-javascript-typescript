@@ -1,4 +1,4 @@
 markdown: kramdown
-remote_theme: "dracula/gh-pages"
-# If this is a project page (e.g., repo name is 'my-js-notes'), uncomment and set:
-# baseurl: /your-repository-name/
+theme: minima
+# source: web/JavaScript/
+# remote_theme: "dracula/gh-pages"
