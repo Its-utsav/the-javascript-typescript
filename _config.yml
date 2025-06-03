@@ -1,5 +1,5 @@
 markdown: kramdown
-# theme: minima
+theme: hacker
 baseurl: /the-javascript-typescript/
 # source: web/JavaScript/
-remote_theme: "dracula/gh-pages"
+# remote_theme: "dracula/gh-pages"
